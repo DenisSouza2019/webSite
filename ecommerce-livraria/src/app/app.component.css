@@ -1,0 +1,380 @@
+/* 
+CSS uses mobile first approach
+All styles default to mobile and use
+media queries to modify to desktop
+*/
+
+/* layout */
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-size: medium; 
+    color: black; 
+    background-color:#ADBAC6; 
+    margin: 0px; 
+    overflow:auto; 
+ }
+ 
+ /* page layout */ 
+ #pageContainer, header, footer {
+    width:100%; /* mobile devices */
+    max-width: 800px;
+    margin:0 auto 0 auto; 
+    background-color:#FFFFFF; 
+ }
+ 
+ #leftColumn {
+    width:170px;
+    margin: 0 auto;
+    padding: 10px; 
+    border-color:Black; 
+    text-align:center;
+ }
+ 
+ /* header & footer */
+ 
+ footer {
+    border-bottom:solid 2px Red; 
+ }
+ header { 
+    height:120px;
+ }
+ div.logo {
+    width:350px; 
+    padding:5px 0 0 5px;  
+    float:left;
+ }
+ 
+ .logo img {
+    width:346px;
+    height: 86px;
+ }
+ 
+ div.utilities { 
+    width: 216px; 
+    float:right; 
+    padding:30px 20px 3px 3px;}
+ 
+ .about {
+    font-size: x-small;
+    padding-bottom: 4px;
+ }
+ 
+ div.mobileLinks{
+     width:100%;
+     text-align: center;
+ }
+ 
+ footer { 
+    clear:both; 
+    border-top:solid 2px Red; 
+    margin-bottom:20px;
+ }
+ 
+ div.footerSearch { 
+    width:200px; 
+    text-align:center; 
+    margin:15px auto;
+ }
+ 
+ div.footerLinks { 
+    width:60%; 
+    margin:3% auto;
+ }
+ 
+ 
+ /* left menu */
+ /* image color #006699 */
+ div.menuContainer {
+    width:170px; 
+    margin:15px auto;
+    
+ }
+ div.menuSearch, .menuBrowse {width:100%;}
+ div.menuBorder {padding:5px 10px;}
+ nav { margin-top:20px; text-align:left;}
+ .menuHead{height: 17px;border:none;background-color: #006699;color:white; font-weight: bold;
+          border-radius:8px 8px 0 0; font-size:80%; padding:2px; text-align: center;letter-spacing: 2px;
+ }
+ 
+ 
+ #pageContent {
+    float:left; 
+    padding: 10px; 
+    border-color:Black;
+ } 
+ 
+ 
+  /* mobile layout (default) */
+    .IsMobile
+    {
+       display:inherit;
+    }
+    .IsDesktop
+    {
+       display:none;
+    }
+ 
+   
+ /* desktop layout */
+ @media only screen and (min-width: 620px)
+ {
+    .IsMobile
+    {
+       display:none; 
+    }
+    .IsDesktop
+    {
+      display:inherit;
+    }
+    header{
+      border-bottom:solid 2px Red;  
+      height: 100px;
+    }
+    #leftColumn {
+       float:left;
+       width:25%;
+    }
+    #pageContent {
+       width:65%;
+    }
+    
+    #checkoutContent
+    {
+       width:100%;
+    }
+ }
+ 
+ 
+ /* text formatting */
+ 
+ .pageTitle { 
+    font-size:large; 
+    color:Red; 
+    text-align:center; 
+    padding-top: 5px;
+ }
+ .pageTitle2 { 
+    font-size:medium; 
+    text-align:center;
+ }
+ .bookTitle { 
+    font: 110%; 
+    color:#006699; 
+    font-weight: bold;
+ }
+ .bookPrice, .bookPriceB,.bookPriceList, .priceLabel {
+    font-size:medium; 
+    color:#990000;
+ }
+ .bookPriceB {
+    font-weight:bold; 
+ }
+ 
+ .priceLabel {
+    color: Black;
+ }
+ .bookPriceList{
+    text-decoration: line-through;
+ }
+ .bookDetails  {
+    margin-top:15px;
+    font-size:small;
+ }
+ .authors { 
+    font-size:smaller;
+ }
+ .centeredNotice {
+    font-size: 110%; 
+    text-align: center;
+    padding:10px;
+ }
+ .centeredText {
+    text-align: center; 
+ }
+ 
+ /* main content */
+ div.bookSimple { 
+    padding:10px 0 10px 0px;
+ }
+ 
+ /* shopping cart */
+ #cart  {
+    max-width: 90%; 
+    border-width: 0; 
+    margin: 0 auto; 
+ }
+ #cart td, #cart th {
+    padding: 5px; 
+ }
+ #shipping {
+    width: 90%; 
+    margin: 10px auto; 
+    text-align: center; 
+    font-size: 80%;
+ }
+ table.cartTotal {
+    float:right;
+    width:30%; 
+    margin:0 100px 10px 0;  
+ }
+ div.cartIcons { 
+    clear:both; 
+    background-color:#99CCFF; 
+    padding:15px; 
+    margin:20px auto; 
+    text-align: center;   
+    border-radius: 6px;
+ }
+ img.addToCart {
+    float:right; 
+    border:none;
+ }
+ div.bookDescription
+ {
+    margin-top: 40px;
+ }
+ 
+ /* forms */
+ .myForm
+ {
+    width:80%;
+    margin:0 auto;
+    text-align: left;
+    padding:3%;
+    border-radius: 6px; 
+    border: 1px solid #CCCCCC; 
+ }
+ .formGroup
+ {
+    margin:10px 0;  
+ }
+ 
+ .myForm label
+ {
+    width:25%;
+    padding:1% 3%;
+    display: inline-block;
+    text-align: right;
+ }
+ 
+ input, textarea, button
+ {
+    border: 1px solid #CCCCCC; 
+    border-radius: 4px;
+    color: #555555;
+    font-size:120%; 
+    width:90%;
+    padding:3px;
+ }
+ 
+ .myForm input, .myForm textarea, .myForm image, .myForm email
+ {
+    width:60%;
+ }
+ 
+ /* bootstrap form style */
+ input:focus 
+ {     
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6); 
+    border-color:#66afe9;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+ }
+ 
+ input.inputImage {
+    width:auto; height: 
+       auto; border:0; 
+    display:inline-block;
+    border-radius: 6px;
+ }
+ input.button {
+    background-color:#eeeeee; 
+    background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: linear-gradient(top, #eeeeee, #cccccc); 
+    border: 1px solid #ccc;
+    width: 80%; 
+    text-align: center;
+    margin:5px;
+ }
+ input.button:hover {
+    background-color: #ddd;
+    background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+    border: 1px solid #bbb;
+ }
+ 
+ .returnButton {
+    width:250px; 
+    font-size: 140%; 
+    padding:5px; 
+    margin: 10px auto;}
+ 
+ /* history */
+ img.Book, img.History {
+    border-color:#CCCCCC; 
+    border-width:thin; 
+    margin:10px; 
+    float:left; 
+    border-style:solid; 
+    padding:0px;  
+ }
+ img.History { 
+    float:left; 
+    margin:0 8px 0 0;
+ }
+ div.bookHistory { 
+    width:96%; 
+    margin:0 auto; 
+    padding: 2%; 
+    clear: both; 
+    background:#f1f1f1; 
+ }
+ div.bookHistory:nth-child(odd) {
+    background:#fafafa;
+ }
+ 
+ /* pseudo-classes */ 
+ a {color:Blue;  }
+ a:visited {color: purple;}
+ a:active {color: red;}
+ a:hover {color: red;}
+ 
+ a.booktitle {
+    color:#006699; 
+    Text-Decoration:none;
+ }
+ a.booktitle:visited {
+    color: #006699;
+ }
+ a.booktitle:active , a.booktitle:hover  {
+    color: Red;
+    Text-Decoration:underline;
+ }
+ a.footerLink {
+    font-size:medium; 
+    margin:0 20px 0 20px; 
+    border:none;}
+ 
+ /* box shadows */
+ img.Book, img.History, .menuHead, div.menuBorder {
+    -moz-box-shadow:2px 2px 5px 0px #ccc;
+    -webkit-box-shadow: 2px 2px 5px 0px #ccc;
+    box-shadow:2px 2px 5px 0px #ccc;
+ }
+ 
+ .centeredSimpleTable
+ {
+    margin:5px auto;
+    border-spacing: 0;
+    border: 1px solid black;
+ }
+ 
+ .centeredSimpleTable th, .centeredSimpleTable td
+ {
+    border-collapse:collapse;
+    padding: 5px;
+ }
+ .centeredSimpleTable th, .centeredSimpleTable tr:nth-child(odd)
+ {
+    background-color:#f5f5f5;
+ }
+ 
+ 
