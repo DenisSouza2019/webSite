@@ -35,7 +35,7 @@ router.get('/livro/:id?', (req, res) => {
     execSQLQuery('SELECT * FROM bookdescriptions' + filter, res);
 })
 
-// Retorna Livros pelo nome da categoria listar com ordem alfabetica
+// Retorna Livros pelo ID da categoria listar com ordem alfabetica
 router.get('/categoria/:id?', (req, res) => {
     let filter = '';
     if (req.params.id) {
@@ -60,6 +60,20 @@ router.get('/autor/:id?', (req, res) => {
     }
     execSQLQuery(sql, res);
 })
+
+// Lista todos os livros que tenha alguma string parecida com o titulo
+// ou descrição
+router.get('/pesquisa/', (req, res) => {
+    const nome = req.body.nome.substring(0, 150);
+    if (nome) {
+        sql = `SELECT * FROM bookdescriptions
+        where bookdescriptions.title LIKE "%${nome}%" OR 
+        bookdescriptions.description LIKE "%${nome}%"
+        ORDER BY bookdescriptions.title ASC `;
+    }
+    execSQLQuery(sql, res);
+})
+
 //*******************FIM****************************** */
 
 
