@@ -19,16 +19,16 @@ app.use('/', router);
 //**************INICIO************************ */
 
 
-// Retorna dados da tabela bookdescriptions 
-// Com a descrição de toda a tabela a cada consulta retorna dados 
-// randomicamente 
+// Retorna dados da tabela bookdescriptions
+// Com a descrição de toda a tabela a cada consulta retorna dados
+// randomicamente
 router.get('/livros', (req, res) => {
     let filter = '';
     if (req.params.id) filter = ' WHERE codigo=' + parseInt(req.params.id);
     execSQLQuery('SELECT * FROM bookdescriptions ORDER BY rand() LIMIT 0,03' + filter, res);
 })
 
-// Retorna dados de apenas um livro 
+// Retorna dados de apenas um livro
 router.get('/livro/:id?', (req, res) => {
     let filter = '';
     if (req.params.id) filter = ' WHERE ISBN=' + parseInt(req.params.id);
@@ -41,8 +41,8 @@ router.get('/categoria/:id?', (req, res) => {
     if (req.params.id) {
         sql = `SELECT *
         FROM bookdescriptions AS l
-        INNER JOIN bookcategoriesbooks AS a ON l.ISBN = a.ISBN  
-        INNER JOIN bookcategories AS b ON b.CategoryID = a.CategoryID  
+        INNER JOIN bookcategoriesbooks AS a ON l.ISBN = a.ISBN
+        INNER JOIN bookcategories AS b ON b.CategoryID = a.CategoryID
         WHERE b.CategoryID = ${ parseInt(req.params.id)}
         ORDER BY l.title ASC`;
     }
@@ -67,7 +67,7 @@ router.get('/pesquisa/', (req, res) => {
     const nome = req.body.nome.substring(0, 150);
     if (nome) {
         sql = `SELECT * FROM bookdescriptions
-        where bookdescriptions.title LIKE "%${nome}%" OR 
+        where bookdescriptions.title LIKE "%${nome}%" OR
         bookdescriptions.description LIKE "%${nome}%"
         ORDER BY bookdescriptions.title ASC `;
     }
@@ -86,11 +86,11 @@ console.log('API funcionando!');
 function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
 
-        host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
+        host: 'localhost', // livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com
         port: 3306,
-        user: 'admin',
-        password: 'denis123',
-        database: 'ecommerce'
+        user: 'root', // admin
+        password: '', //denis123
+        database: 'sandvigbookstore' // ecommerce
 
     });
 
