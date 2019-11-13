@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-coluna',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColunaComponent implements OnInit {
 
-  constructor() { }
+  nomeLivro: string;
+  livros: any;
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.nomeLivro = '';
+    this.livros = [];
+
+  }
+
+  pesquisar() {
+    console.log(this.nomeLivro);
+    const req = this.httpClient.get('http://127.0.0.1:3000/pesquisa/', this.nomeLivro ).toPromise();
+
+    req.then((nomeLivro) => {
+      this.livros = nomeLivro;
+    });
+    console.log (this.livros);
   }
 
 }

@@ -2,94 +2,90 @@
 
 <div class="shadow p-3 mb-5 bg-white rounded">
 
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="list-group" style="width: 13rem;">
-                <div class="card-header text-center">
-                    Pesquise
-                </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Insira nome livro"
-                        aria-label="Pesquisar">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-                </form>
-            </div>
-
-            <br>
-            <div class="list-group" style="width: 13rem;">
-                <div class="card-header text-center">
-                    Temas
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item list-group-item-action ">ASP.NET</li>
-                    <li class="list-group-item list-group-item-action">JavaScript</li>
-                    <li class="list-group-item list-group-item-action">MySQL</li>
-                    <li class="list-group-item list-group-item-action">PHP</li>
-                    <li class="list-group-item list-group-item-action">Regular Expressions</li>
-                    <li class="list-group-item list-group-item-action">SQL</li>
-
-                </ul>
-            </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="list-group" style="width: 13rem;">
+        <div class="card-header text-center">
+          Pesquise
         </div>
-        <div class="col-sm-7">
-            <div class="news">
-                <div class="title">
-                    <a class="booktitle" href="ProductPage.php?isbn=0596005431"> Web Database Applications with PHP &
-                        MySQL</a>
-                </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" name = "pesquisa" placeholder="Insira nome livro" [(ngModel)] = "nomeLivro">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click) = "pesquisar()" >Pesquisar</button>
+        </form>
+      </div>
 
-                <p class="description">
-                    <img class="img-responsive"
-                        src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596005431.01.THUMBZZZ.jpg"
-                        alt="" />
-                    There are many reasons for serving up dynamic content from a web site: to offer an online shopping
-                    site
-                </p>
-
-                <p class="more">
-                    <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                </p>
-                <hr>
-            </div>
-            <div class="news">
-                <div class="title">
-                    <a class="booktitle" href="ProductPage.php?isbn=0596005431"> Web Database Applications with PHP &
-                        MySQL</a>
-                </div>
-
-                <p class="description">
-                    <img class="img-responsive"
-                        src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596005431.01.THUMBZZZ.jpg"
-                        alt="" />
-                    There are many reasons for serving up dynamic content from a web site: to offer an online shopping
-                    site
-                </p>
-
-                <p class="more">
-                    <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                </p>
-                <hr>
-            </div>
-
-            <div class="news">
-                <div class="title">
-                    <a class="booktitle" href="ProductPage.php?isbn=0596005431"> Web Database Applications with PHP &
-                        MySQL</a>
-                </div>
-
-                <p class="description">
-                    <img class="img-responsive"
-                        src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596005431.01.THUMBZZZ.jpg"
-                        alt="" />
-                    There are many reasons for serving up dynamic content from a web site: to offer an online shopping
-                    site
-                </p>
-
-                <p class="more">
-                    <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                </p>
-            </div>
+      <br>
+      <div class="list-group" style="width: 13rem;">
+        <div class="card-header text-center">
+          Temas
         </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action ">ASP.NET</li>
+          <li class="list-group-item list-group-item-action">JavaScript</li>
+          <li class="list-group-item list-group-item-action">MySQL</li>
+          <li class="list-group-item list-group-item-action">PHP</li>
+          <li class="list-group-item list-group-item-action">Regular Expressions</li>
+          <li class="list-group-item list-group-item-action">SQL</li>
 
+        </ul>
+      </div>
     </div>
+    <div class="col-sm-7">
+      <div class="news">
+        <div class="title">
+          <a class="booktitle" href="ProductPage.php?isbn=0596005431"> Web Database Applications with PHP &
+            MySQL</a>
+        </div>
+
+        <p class="description">
+          <img class="img-responsive"
+            src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596005431.01.THUMBZZZ.jpg" alt="" />
+          There are many reasons for serving up dynamic content from a web site: to offer an online shopping
+          site
+        </p>
+
+        <p class="more">
+          <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+        </p>
+        <hr>
+      </div>
+      <div class="news">
+        <div class="title">
+          <a class="booktitle" href="ProductPage.php?isbn=0596005431"> Web Database Applications with PHP &
+            MySQL</a>
+        </div>
+
+        <p class="description">
+          <img class="img-responsive"
+            src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596005431.01.THUMBZZZ.jpg" alt="" />
+          There are many reasons for serving up dynamic content from a web site: to offer an online shopping
+          site
+        </p>
+
+        <p class="more">
+          <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+        </p>
+        <hr>
+      </div>
+
+      <div class="news">
+        <div class="title">
+          <a class="booktitle" href="ProductPage.php?isbn=0596005431"> Web Database Applications with PHP &
+            MySQL</a>
+        </div>
+
+        <p class="description">
+          <img class="img-responsive"
+            src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596005431.01.THUMBZZZ.jpg" alt="" />
+          There are many reasons for serving up dynamic content from a web site: to offer an online shopping
+          site
+        </p>
+
+        <p class="more">
+          <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+        </p>
+      </div>
+    </div>
+
+  </div>
 </div>

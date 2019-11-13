@@ -64,7 +64,7 @@ router.get('/autor/:id?', (req, res) => {
 // Lista todos os livros que tenha alguma string parecida com o titulo
 // ou descrição
 router.get('/pesquisa/', (req, res) => {
-    const nome = req.body.nome.substring(0, 150);
+    const nome = req.body.nomeLivro.substring(0, 150);
     if (nome) {
         sql = `SELECT * FROM bookdescriptions
         where bookdescriptions.title LIKE "%${nome}%" OR
@@ -75,9 +75,6 @@ router.get('/pesquisa/', (req, res) => {
 })
 
 //*******************FIM****************************** */
-
-
-
 
 //inicia o servidor
 app.listen(port);
