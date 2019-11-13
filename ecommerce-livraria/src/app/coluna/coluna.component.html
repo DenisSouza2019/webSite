@@ -11,7 +11,7 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" name="pesquisa" placeholder="Insira nome livro"
             [(ngModel)]="nomeLivro.nome">
-          <button class="btn btn-outline-success my-2 my-sm-0" (click)="pesquisar()">Pesquisar</button>
+          <button class="btn btn-outline-success my-2 my-sm-2" (click)="pesquisar()">Pesquisar</button>
         </form>
       </div>
 
@@ -33,11 +33,10 @@
         <div class="title">
           <a class="booktitle" href="{{item.ISBN}}"> {{item.title}}</a>
         </div>
-        <p class="description">
-          <img class="img-responsive"
-            src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg" alt="" /> <br>
-          {{item.description }}
-        </p>
+        <img class="img-responsive"
+          src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg" alt="" />
+        <div innerHTML="{{item.description.substring(0,200) }}...">
+        </div>
         <p class="more">
           <a href="#">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
         </p>
