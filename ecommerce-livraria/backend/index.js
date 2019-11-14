@@ -68,16 +68,18 @@ router.get('/autor/:id?', (req, res) => {
 
 // Lista todos os livros que tenha alguma string parecida com o titulo
 // ou descrição
-router.post('/pesquisa', (req, res) => {
-    const nome = req.body.nome.substring(0, 150);
-    console.log(nome);
-    if (nome) {
+router.get('/pesquisa/:nome?', (req, res) => {
+    //const nome = req.body.nome.substring(0, 150);
+    const nome = req.params.nome
+    
+    if (req.params.nome) {
         sql = `SELECT * FROM bookdescriptions
         where bookdescriptions.title LIKE "%${nome}%" OR
         bookdescriptions.description LIKE "%${nome}%"
         ORDER BY bookdescriptions.title ASC `;
     }
     execSQLQuery(sql, res);
+
 })
 
 //*******************FIM****************************** */
@@ -89,15 +91,18 @@ console.log('API funcionando!');
 function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
 
-        //host: 'localhost', 
         host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        //user: 'root', 
         user: 'admin',
-        //password: '', 
         password: 'denis123',
+        database: 'ecommerce',
+
+        //host: 'localhost', 
+        //user: 'root', 
+        //password: '', 
         //database: 'sandvigbookstore' 
-        database: 'ecommerce'
+        //database: 'livraria'
+
+        port: 3306
 
     });
 

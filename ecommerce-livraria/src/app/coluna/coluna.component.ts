@@ -8,20 +8,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ColunaComponent implements OnInit {
 
-  nomeLivro: any;
+  nomeLivro: String;
   colecaoLivros: any;
-  colecaoCategorias: any;
+  dadosCategoria: any = {};
   categoria: any;
+  erro:any;
+  colecaoCategorias: any ;
+  
+  
 
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.categoria = {};
-    this.nomeLivro = {};
-    this.colecaoLivros = {};
-    this.colecaoCategorias = {};
-
+    this.nomeLivro='';
+    this.erro={};
+    
 
     const req1 = this.httpClient.get("http://localhost:3000/livros").toPromise();
     req1.then((livros) => {
@@ -38,10 +40,19 @@ export class ColunaComponent implements OnInit {
 
   pesquisar() {
     this.colecaoLivros = {};
-    const req = this.httpClient.post("http://127.0.0.1:3000/pesquisa", this.nomeLivro).toPromise();
-    req.then((DadosRetornados) => {
-      this.colecaoLivros = DadosRetornados;
-    });
+    console.log(this.nomeLivro);
+    const req = this.httpClient.get(`http://127.0.0.1:3000/pesquisa/${this.nomeLivro}`).toPromise();
+    req.then((livros) => {
+      this.colecaoLivros = livros;
+    })
+  }
+
+  categorias(){
+    console.log("Dados",this.dadosCategoria);
+    const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${this.dadosCategoria.CategoryID}`).toPromise();
+    req.then((livros) => {
+      this.colecaoLivros = livros;
+    })
 
   }
 

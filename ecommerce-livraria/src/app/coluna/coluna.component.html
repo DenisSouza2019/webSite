@@ -1,18 +1,17 @@
 <br>
 
 <div class="shadow p-3 mb-5 bg-white rounded">
-
+   
+        
+   
   <div class="row">
     <div class="col-sm-4">
       <div class="list-group" style="width: 13rem;">
-        <div class="card-header text-center">
+          <div class="card-header text-center">
           Pesquise
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" name="pesquisa" placeholder="Insira nome livro"
-            [(ngModel)]="nomeLivro.nome">
-          <button class="btn btn-outline-success my-2 my-sm-2" (click)="pesquisar()">Pesquisar</button>
-        </form>
+          </div>
+          <input  class="form-control mr-sm-2" type="text" name="Nome" id="Nome" [(ngModel)]="nomeLivro"  placeholder="Insira nome do livro"> 
+         <button class="btn btn-outline-success my-2 my-sm-2" (click)="pesquisar()">Pesquisar</button>
       </div>
 
       <br>
@@ -20,9 +19,11 @@
         <div class="card-header text-center">
           Categorias
         </div>
-        <ul class="list-group list-group-flush" *ngFor="let item of colecaoCategorias">
-          <li class="list-group-item list-group-item-action">{{item.CategoryName}}</li>
-        </ul>
+        <select class="browser-default custom-select" type="text" [(ngModel)]="dadosCategoria" (click)="categorias()">
+            <option *ngFor="let item of colecaoCategorias" [ngValue]="item" >{{item.CategoryName}}</option>
+        </select>
+
+        
 
       </div>
     </div>
