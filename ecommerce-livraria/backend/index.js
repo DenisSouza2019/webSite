@@ -100,7 +100,7 @@ function execSQLQuery(sqlQry, res) {
         //user: 'root', 
         //password: '', 
         //database: 'sandvigbookstore' 
-        //database: 'livraria'
+        //database: 'livraria',
 
         port: 3306
 

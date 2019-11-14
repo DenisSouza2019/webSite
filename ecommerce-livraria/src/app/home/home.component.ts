@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-coluna',
-  templateUrl: './coluna.component.html',
-  styleUrls: ['./coluna.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class ColunaComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   nomeLivro: String;
   colecaoLivros: any;
+  umLivro:any;
   dadosCategoria: any = {};
   categoria: any;
   erro:any;
   colecaoCategorias: any ;
+  page: boolean;
   
   
 
@@ -21,6 +23,8 @@ export class ColunaComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.page = true;
+    this.umLivro = {};
     this.nomeLivro='';
     this.erro={};
     
@@ -40,6 +44,7 @@ export class ColunaComponent implements OnInit {
 
   pesquisar() {
     this.colecaoLivros = {};
+    this.page = true;
     console.log(this.nomeLivro);
     const req = this.httpClient.get(`http://127.0.0.1:3000/pesquisa/${this.nomeLivro}`).toPromise();
     req.then((livros) => {
@@ -49,13 +54,17 @@ export class ColunaComponent implements OnInit {
 
   categorias(){
     console.log("Dados",this.dadosCategoria);
+    this.page = true;
     const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${this.dadosCategoria.CategoryID}`).toPromise();
     req.then((livros) => {
       this.colecaoLivros = livros;
     })
-
   }
 
+  oferta(livro){
+    this.page = false;
+    this.umLivro = livro;
+  }
 
 
 }

@@ -1,0 +1,50 @@
+/* page layout */ 
+
+ 
+body {
+    width:100%; /* mobile devices */
+    max-width: 800px;
+    margin:0 auto 0 auto; 
+    background-color:#FFFFFF; 
+ }
+
+ .bookTitle { 
+    font: 110%; 
+    color:#006699; 
+    font-weight: bold;
+ }
+
+ .authors { 
+    font-size:smaller;
+ }
+
+ .bookPrice, .bookPriceB,.bookPriceList, .priceLabel {
+    font-size:medium; 
+    color:#990000;
+ }
+
+ .priceLabel {
+    color: Black;
+ }
+
+ .bookPriceList{
+    text-decoration: line-through;
+ }
+
+ .bookPriceB {
+    font-weight:bold; 
+ }
+
+ .bookDetails  {
+    margin-top:15px;
+    font-size:small;
+ }
+
+ img.Book, img.History {
+    border-color:#CCCCCC; 
+    border-width:thin; 
+    margin:10px; 
+    float:left; 
+    border-style:solid; 
+    padding:0px;  
+ }

@@ -1,0 +1,97 @@
+<br>
+
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="list-group" style="width: 13rem;">
+                <div class="card-header text-center">
+                    Pesquise
+                </div>
+                <input class="form-control mr-sm-2" type="text" name="Nome" id="Nome" [(ngModel)]="nomeLivro"
+                    placeholder="Insira nome do livro">
+                <button class="btn btn-outline-success my-2 my-sm-2" (click)="pesquisar()">Pesquisar</button>
+            </div>
+
+            <br>
+            <div class="list-group" style="width: 13rem;">
+                <div class="card-header text-center">
+                    Categorias
+                </div>
+                <select class="browser-default custom-select" type="text" [(ngModel)]="dadosCategoria"
+                    (click)="categorias()">
+                    <option *ngFor="let item of colecaoCategorias" [ngValue]="item">{{item.CategoryName}}</option>
+                </select>
+
+
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-7" *ngIf="page">
+            <div class="news" *ngFor="let item of colecaoLivros">
+                <div class="title">
+                    <a class="booktitle" href="#" (click)="oferta(item)"> {{item.title}}</a>
+                </div>
+                <img class="img-responsive"
+                    src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg"
+                    alt="" />
+                <div innerHTML="{{item.description.substring(0,200) }}...">
+                </div>
+                <p class="more">
+                    <a href="#" (click)="oferta(item)">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                </p>
+                <hr>
+            </div>
+        </div>
+
+        <div class="col-sm-7" *ngIf="!page">
+
+
+
+            <div class="bookTitle "> {{umLivro.title}}</div>
+            <div class="authors">by <a href='#'>Nome do Autour</a></div>
+            <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.LZZZZZZZ.jpg">
+                <img class="Book" alt="umLivro.title" title="de"
+                    src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.MZZZZZZZ.jpg"></a>
+            <br />
+
+            <div>
+                <span class="priceLabel">Preço de tabela: </span>
+                <span class="bookPriceList">
+                    {{umLivro.price | currency:'BRL'}} </span>
+            </div>
+
+            <div>
+                <span class="priceLabel">Nosso preço:</span>
+                <span class="bookPriceB">
+                    {{umLivro.price | currency:'BRL'}} </span>
+            </div>
+
+            <div>
+                <span class="priceLabel">Desconto pra você:</span>
+                <span class="bookPriceB">
+                    {{umLivro.price | currency:'BRL'}} (20%)</span><br />
+            </div>
+
+            <div class="bookDetails">
+                <div> <b>ISBN: </b> {{umLivro.ISBN}} </div>
+                <div> <b>Editora: </b> {{umLivro.publisher}}</div>
+                <div> <b>Paginas: </b> {{umLivro.pages}}</div>
+                <div> <b>Edição: </b> {{umLivro.edition}}</div>
+            </div>
+
+            <a href="#addCarinhodecompra">
+                <img class="addToCart" src=" " alt="Add ao carinho" title="Add ao carinho"></a>
+
+            <div innerHTML="{{umLivro.description }}">
+            </div>
+
+            <a href="#IrParaCarinhode Compras">
+                    <img class="addToCart" src=" " alt="Ir ao carinho" title="Ir ao carinho"></a>
+
+
+        </div>
+
+    </div>

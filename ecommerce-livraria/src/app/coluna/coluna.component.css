@@ -1,9 +1,0 @@
-/* page layout */ 
-
- 
-body {
-    width:100%; /* mobile devices */
-    max-width: 800px;
-    margin:0 auto 0 auto; 
-    background-color:#FFFFFF; 
- }

@@ -8,14 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { RodapeComponent } from './rodape/rodape.component';
-import { ColunaComponent } from './coluna/coluna.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TopoComponent,
     RodapeComponent,
-    ColunaComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
