@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
       this.erroC=false;
       this.erroP=false;
       this.page = true;
-
+      this.colecaoLivros={};
       const req = this.httpClient.get(`http://127.0.0.1:3000/categoria/${this.dadosCategoria.CategoryID}`).toPromise();
       req.then((livros) => {
         this.colecaoLivros = livros;

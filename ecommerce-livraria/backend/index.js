@@ -131,7 +131,7 @@ function execSQLQuery(sqlQry, res) {
     database: 'ecommerce',
 
     //host: 'localhost',
-    // user: 'root',
+    //user: 'root',
     // password: '',
     // database: 'sandvigbookstore',
     //database: 'livraria',

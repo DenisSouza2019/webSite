@@ -4,11 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
 
-import { AppRoutingModule, routing } from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
+import { routing } from './app.routing';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -16,7 +21,10 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     TopoComponent,
     RodapeComponent,
-    HomeComponent
+    HomeComponent,
+    CadastroComponent,
+    CarrinhoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,11 +32,18 @@
     <!--DIV RESPONSAVEL POR LISTAS LIVROS-->
     <div class="col-sm-7" *ngIf="page">
 
+        <div class="alert alert-danger" role="alert" *ngIf="erroP">
+            Nome do livro invalido, insera outro nome.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="erroC">
+            Categoria sem Livros, selecione outra categoria
+        </div>
+
       <div class="news" *ngFor="let item of colecaoLivros">
         <div class="title">
-          <a class="booktitle" href="#" (click)="oferta(item)"> {{item.title}}</a>
+          <a class="booktitle"  (click)="oferta(item)"> {{item.title}}</a>
           <br>
-          <span class="authors">by <a href='#' (click)="autor(item)">{{item.nameF }} {{ item.nameL}}</a></span><br />
+          <span class="authors">by <a  (click)="autor(item)">{{item.nameF }} {{ item.nameL}}</a></span><br />
 
         </div>
         <img class="img-responsive"
@@ -44,7 +51,7 @@
         <div innerHTML="{{item.description.substring(0,200) }}...">
         </div>
         <p class="more">
-          <a href="#" (click)="oferta(item)">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+          <a  (click)="oferta(item)">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
         </p>
         <hr>
       </div>
@@ -85,17 +92,21 @@
         <div> <b>Edição: </b> {{umLivro.edition}}</div>
       </div>
 
+      
       <a routerLink="/carrinho">
         <!--<img class="addToCart" src=" " alt="Add ao carinho" title="Add ao carinho"></a> -->
         <img class="addToCart" src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-cart-small.gif" alt="Add to cart" title="Add to cart"></a>
+
+
+
       <div innerHTML="{{umLivro.description }}">
       </div>
 
       <a href="#IrParaCarinhode Compras">
-        <img class="addToCart" src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-shopping-cart-blue.gif" alt="Ir ao carinho" title="Ir ao carinho"></a>
-
-
+          <img class="addToCart" src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-shopping-cart-blue.gif" alt="Ir ao carinho" title="Ir ao carinho"></a>
+  
     </div>
+  
 
     <!-- Div que mostra a pagina de adicao no carrinho-->
 
