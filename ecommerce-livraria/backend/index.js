@@ -96,6 +96,26 @@ router.get('/pesquisa/:nome?', (req, res) => {
 
 })
 
+// Cadastro de umas pesso no site
+router.post('/add/cliente', (req, res) => {
+    
+    const nomeP = req.body.nomeP.substring(0, 150);
+    const nomeS = req.body.nomeS.substring(0, 150);
+    const email = req.body.email.substring(0, 150);
+    const city = req.body.city.substring(0, 50);
+    const cep = req.body.cep.substring(0, 17);
+    const state = req.body.state.substring(0, 3);
+    const end = req.body.end.substring(0, 150);
+    const number = parseInt(req.body.number.substring(0, 10));
+    const referencia = req.body.referencia.substring(0, 150);
+
+    sql = `INSERT INTO bookcustomers VALUES
+    (0,'${nomeP}','${nomeS}','${email}','${city}',
+    '${cep}','${state}','${end}',${number}, '${referencia}')`;
+
+    execSQLQuery(sql, res);
+});
+
 //*******************FIM****************************** */
 
 //inicia o servidor
