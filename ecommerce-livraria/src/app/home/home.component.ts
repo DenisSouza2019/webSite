@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   umLivro:any;
   dadosCategoria: any = {};
   categoria: any;
-  erro:any;
+  erroC:boolean;
+  erroP:boolean;
   colecaoCategorias: any ;
   page: boolean;
   
@@ -26,7 +28,8 @@ export class HomeComponent implements OnInit {
     this.page = true;
     this.umLivro = {};
     this.nomeLivro='';
-    this.erro={};
+    this.erroC=false;
+    this.erroP=false;
     
 
     const req1 = this.httpClient.get("http://localhost:3000/livros").toPromise();
@@ -43,23 +46,36 @@ export class HomeComponent implements OnInit {
   }
 
   pesquisar() {
-    this.colecaoLivros = {};
+    this.erroP=false;
+    this.erroC=false;
     this.page = true;
-    console.log(this.nomeLivro);
     const req = this.httpClient.get(`http://127.0.0.1:3000/pesquisa/${this.nomeLivro}`).toPromise();
     req.then((livros) => {
       this.colecaoLivros = livros;
-    })
+      livros[0].AuthorID;
+    }).catch((erro) => {
+        this.erroP=true;
+     
+    });
   }
 
   categorias(){
-    this.colecaoLivros={};
-    this.page = true;
-    const req = this.httpClient.get(`http://127.0.0.1:3000/categoria/${this.dadosCategoria.CategoryID}`).toPromise();
-    req.then((livros) => {
-      this.colecaoLivros = livros;
-    })
+      this.erroC=false;
+      this.erroP=false;
+      this.page = true;
+
+      const req = this.httpClient.get(`http://127.0.0.1:3000/categoria/${this.dadosCategoria.CategoryID}`).toPromise();
+      req.then((livros) => {
+        this.colecaoLivros = livros;
+      })
+      if (this.dadosCategoria.CategoryID == 8) this.erroC=true;   
+      
+      
+    
+    
+
   }
+
 
   oferta(livro){
     this.page = false;
@@ -67,13 +83,11 @@ export class HomeComponent implements OnInit {
   }
 
   autor(livro){
-    this.colecaoLivros = {};
     this.page = true;
     const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${livro.AuthorID}`).toPromise();
     req.then((livros) => {
       this.colecaoLivros = livros;
     })
-
 
   }
 

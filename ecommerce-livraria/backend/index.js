@@ -23,12 +23,12 @@ app.use('/', router);
 // Com a descrição de toda a tabela a cada consulta retorna dados
 // randomicamente
 router.get('/livros', (req, res) => {
-    
+
     sql=`SELECT  livros.description,livros.edition,livros.ISBN,livros.pages,livros.price,
     livros.pubdate,livros.publisher,livros.title,autores.nameF,autores.nameL,autores.AuthorID
     FROM bookdescriptions as livros
     INNER JOIN bookauthorsbooks AS bookAutor ON livros.ISBN = bookAutor.ISBN
-    INNER JOIN bookauthors AS autores ON autores.AuthorID = bookAutor.AuthorID 
+    INNER JOIN bookauthors AS autores ON autores.AuthorID = bookAutor.AuthorID
     ORDER BY rand() LIMIT 0,03;`
 
     execSQLQuery(sql, res);
@@ -36,7 +36,7 @@ router.get('/livros', (req, res) => {
 
 // Retorna todas as categorias
 router.get('/categorias', (req, res) => {
-   
+
     execSQLQuery('SELECT * FROM bookcategories order by bookcategories.CategoryName ASC', res);
 })
 
@@ -81,7 +81,7 @@ router.get('/autor/:id?', (req, res) => {
 router.get('/pesquisa/:nome?', (req, res) => {
     //const nome = req.body.nome.substring(0, 150);
     const nome = req.params.nome
-    
+
     if (req.params.nome) {
         sql = `SELECT livros.description,livros.edition,livros.ISBN,livros.pages,livros.price,
         livros.pubdate,livros.publisher,livros.title,autores.nameF,autores.nameL,autores.AuthorID
@@ -105,16 +105,16 @@ console.log('API funcionando!');
 function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
 
-        //host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
-        //user: 'admin',
-        //password: 'denis123',
-        //database: 'ecommerce',
+        host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
+        user: 'admin',
+       password: 'denis123',
+        database: 'ecommerce',
 
-        host: 'localhost', 
-        user: 'root', 
-        password: '', 
-        //database: 'sandvigbookstore' 
-        database: 'livraria',
+        //host: 'localhost',
+       // user: 'root',
+       // password: '',
+       // database: 'sandvigbookstore',
+        //database: 'livraria',
 
         port: 3306
 

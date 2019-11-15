@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { routing } from './app.routing';
 
 
 @NgModule({
@@ -16,13 +18,15 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     TopoComponent,
     RodapeComponent,
-    HomeComponent
+    HomeComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
