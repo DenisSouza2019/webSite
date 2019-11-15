@@ -2,7 +2,6 @@
 
 <div class="shadow p-3 mb-5 bg-white rounded">
 
-<<<<<<< HEAD
   <div class="row">
 
     <!--DIV REFERENTE A COLUNA DE PESQUISA E SELEC DE CATEGORIA-->
@@ -10,66 +9,6 @@
       <div class="list-group" style="width: 13rem;">
         <div class="card-header text-center">
           Pesquise
-=======
-    <div class="row">
-
-        <!--DIV REFERENTE A COLUNA DE PESQUISA E SELEC DE CATEGORIA-->
-        <div class="col-sm-4">
-            <div class="list-group" style="width: 13rem;">
-                <div class="card-header text-center">
-                    Pesquise
-                </div>
-                <input class="form-control mr-sm-2" type="text" name="Nome" id="Nome" [(ngModel)]="nomeLivro"
-                    placeholder="Insira nome do livro">
-                <button class="btn btn-outline-success my-2 my-sm-2" (click)="pesquisar()">Pesquisar</button>
-            </div>
-
-            <br>
-            <div class="list-group" style="width: 13rem;">
-                <div class="card-header text-center">
-                    Categorias
-                </div>
-                <select class="browser-default custom-select mb-3" [(ngModel)]="dadosCategoria" (click)="categorias()">
-                    <option *ngFor="let item of colecaoCategorias" [ngValue]="item">{{item.CategoryName}}</option>
-                </select>
-
-
-
-            </div>
-        </div>
-
-        <!--DIV RESPONSAVEL POR LISTAS LIVROS-->
-        <div class="col-sm-7" *ngIf="page">
-
-
-            <div class="alert alert-danger" role="alert" *ngIf="erroP">
-                Nome do livro invalido, insera outro nome.
-            </div>
-            <div class="alert alert-danger" role="alert" *ngIf="erroC">
-                Categoria sem Livros, selecione outra categoria
-            </div>
-
-            <div class="news" *ngFor="let item of colecaoLivros">
-
-                <div class="title">
-                    <a class="booktitle" href="#" (click)="oferta(item)"> {{item.title}}</a>
-                    <br>
-                    <span class="authors">by <a href='#' (click)="autor(item)">{{item.nameF }}
-                            {{ item.nameL}}</a></span><br />
-
-                </div>
-                <img class="img-responsive"
-                    src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg"
-                    alt="" />
-                <div innerHTML="{{item.description.substring(0,200) }}...">
-                </div>
-                <p class="more">
-                    <a href="#" (click)="oferta(item)">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                </p>
-                <hr>
-            </div>
-
->>>>>>> master
         </div>
         <input class="form-control mr-sm-2" type="text" name="Nome" id="Nome" [(ngModel)]="nomeLivro"
           placeholder="Insira nome do livro">
@@ -85,57 +24,13 @@
           <option *ngFor="let item of colecaoCategorias" [ngValue]="item">{{item.CategoryName}}</option>
         </select>
 
-<<<<<<< HEAD
-=======
-        <!--DIV RESPONSAVEL POR MOSTRAR DETALHES DE UM LIVRO-->
-        <div class="col-sm-7" *ngIf="!page">
-
-
-
-            <div class="bookTitle "> {{umLivro.title}}</div>
-            <div class="authors">by <a href='#' (click)="autor(umLivro)">{{umLivro.nameF }} {{ umLivro.nameL}}</a></div>
-            <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.LZZZZZZZ.jpg">
-                <img class="Book" alt="umLivro.title" title="de"
-                    src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.MZZZZZZZ.jpg"></a>
-            <br />
-
-            <div>
-                <span class="priceLabel">Preço de tabela: </span>
-                <span class="bookPriceList">
-                    {{umLivro.price | currency:'BRL'}} </span>
-            </div>
-
-            <div>
-                <span class="priceLabel">Nosso preço:</span>
-                <span class="bookPriceB">
-                    {{umLivro.price | currency:'BRL'}} </span>
-            </div>
-
-            <div>
-                <span class="priceLabel">Desconto pra você:</span>
-                <span class="bookPriceB">
-                    {{umLivro.price | currency:'BRL'}} (20%)</span><br />
-            </div>
-
-            <div class="bookDetails">
-                <div> <b>ISBN: </b> {{umLivro.ISBN}} </div>
-                <div> <b>Editora: </b> {{umLivro.publisher}}</div>
-                <div> <b>Paginas: </b> {{umLivro.pages}}</div>
-                <div> <b>Edição: </b> {{umLivro.edition}}</div>
-            </div>
->>>>>>> master
 
 
       </div>
     </div>
 
-<<<<<<< HEAD
     <!--DIV RESPONSAVEL POR LISTAS LIVROS-->
     <div class="col-sm-7" *ngIf="page">
-=======
-            <a href="#IrParaCarinhode Compras">
-                <img class="addToCart" src=" " alt="Ir ao carinho" title="Ir ao carinho"></a>
->>>>>>> master
 
       <div class="news" *ngFor="let item of colecaoLivros">
         <div class="title">
