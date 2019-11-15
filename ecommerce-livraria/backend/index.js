@@ -112,7 +112,7 @@ function execSQLQuery(sqlQry, res) {
 
         host: 'localhost', 
         user: 'root', 
-        password: '', 
+        //password: '', 
         //database: 'sandvigbookstore' 
         database: 'livraria',
 
