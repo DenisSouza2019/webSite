@@ -3,6 +3,8 @@
 <div class="shadow p-3 mb-5 bg-white rounded">
 
     <div class="row">
+
+        <!--DIV REFERENTE A COLUNA DE PESQUISA E SELEC DE CATEGORIA-->
         <div class="col-sm-4">
             <div class="list-group" style="width: 13rem;">
                 <div class="card-header text-center">
@@ -28,11 +30,15 @@
             </div>
         </div>
 
-
+        <!--DIV RESPONSAVEL POR LISTAS LIVROS-->
         <div class="col-sm-7" *ngIf="page">
+                
             <div class="news" *ngFor="let item of colecaoLivros">
                 <div class="title">
                     <a class="booktitle" href="#" (click)="oferta(item)"> {{item.title}}</a>
+                    <br>
+                    <span class="authors">by <a href='#' (click)="autor(item)">{{item.nameF }} {{ item.nameL}}</a></span><br />
+                    
                 </div>
                 <img class="img-responsive"
                     src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg"
@@ -46,12 +52,13 @@
             </div>
         </div>
 
+        <!--DIV RESPONSAVEL POR MOSTRAR DETALHES DE UM LIVRO-->
         <div class="col-sm-7" *ngIf="!page">
 
 
 
             <div class="bookTitle "> {{umLivro.title}}</div>
-            <div class="authors">by <a href='#'>Nome do Autour</a></div>
+            <div class="authors">by <a href='#' (click)="autor(umLivro)" >{{umLivro.nameF }} {{ umLivro.nameL}}</a></div>
             <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.LZZZZZZZ.jpg">
                 <img class="Book" alt="umLivro.title" title="de"
                     src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.MZZZZZZZ.jpg"></a>

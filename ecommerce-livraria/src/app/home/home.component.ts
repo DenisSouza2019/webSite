@@ -53,9 +53,9 @@ export class HomeComponent implements OnInit {
   }
 
   categorias(){
-    console.log("Dados",this.dadosCategoria);
+    this.colecaoLivros={};
     this.page = true;
-    const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${this.dadosCategoria.CategoryID}`).toPromise();
+    const req = this.httpClient.get(`http://127.0.0.1:3000/categoria/${this.dadosCategoria.CategoryID}`).toPromise();
     req.then((livros) => {
       this.colecaoLivros = livros;
     })
@@ -64,6 +64,17 @@ export class HomeComponent implements OnInit {
   oferta(livro){
     this.page = false;
     this.umLivro = livro;
+  }
+
+  autor(livro){
+    this.colecaoLivros = {};
+    this.page = true;
+    const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${livro.AuthorID}`).toPromise();
+    req.then((livros) => {
+      this.colecaoLivros = livros;
+    })
+
+
   }
 
 

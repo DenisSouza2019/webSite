@@ -23,8 +23,15 @@ app.use('/', router);
 // Com a descrição de toda a tabela a cada consulta retorna dados
 // randomicamente
 router.get('/livros', (req, res) => {
-   
-    execSQLQuery('SELECT * FROM bookdescriptions ORDER BY rand() LIMIT 0,03', res);
+    
+    sql=`SELECT  livros.description,livros.edition,livros.ISBN,livros.pages,livros.price,
+    livros.pubdate,livros.publisher,livros.title,autores.nameF,autores.nameL,autores.AuthorID
+    FROM bookdescriptions as livros
+    INNER JOIN bookauthorsbooks AS bookAutor ON livros.ISBN = bookAutor.ISBN
+    INNER JOIN bookauthors AS autores ON autores.AuthorID = bookAutor.AuthorID 
+    ORDER BY rand() LIMIT 0,03;`
+
+    execSQLQuery(sql, res);
 })
 
 // Retorna todas as categorias
@@ -44,12 +51,15 @@ router.get('/livro/:id?', (req, res) => {
 router.get('/categoria/:id?', (req, res) => {
     let filter = '';
     if (req.params.id) {
-        sql = `SELECT *
-        FROM bookdescriptions AS l
-        INNER JOIN bookcategoriesbooks AS a ON l.ISBN = a.ISBN
+        sql = `SELECT  livros.description,livros.edition,livros.ISBN,livros.pages,livros.price,
+        livros.pubdate,livros.publisher,livros.title,autores.nameF,autores.nameL,autores.AuthorID
+        FROM bookdescriptions AS livros
+        INNER JOIN bookcategoriesbooks AS a ON livros.ISBN = a.ISBN
         INNER JOIN bookcategories AS b ON b.CategoryID = a.CategoryID
+        INNER JOIN bookauthorsbooks AS bookAutor ON livros.ISBN = bookAutor.ISBN
+        INNER JOIN bookauthors AS autores ON autores.AuthorID = bookAutor.AuthorID
         WHERE b.CategoryID = ${ parseInt(req.params.id)}
-        ORDER BY l.title ASC`;
+        ORDER BY livros.title ASC`;
     }
     execSQLQuery(sql, res);
 })
@@ -73,10 +83,14 @@ router.get('/pesquisa/:nome?', (req, res) => {
     const nome = req.params.nome
     
     if (req.params.nome) {
-        sql = `SELECT * FROM bookdescriptions
-        where bookdescriptions.title LIKE "%${nome}%" OR
-        bookdescriptions.description LIKE "%${nome}%"
-        ORDER BY bookdescriptions.title ASC `;
+        sql = `SELECT livros.description,livros.edition,livros.ISBN,livros.pages,livros.price,
+        livros.pubdate,livros.publisher,livros.title,autores.nameF,autores.nameL,autores.AuthorID
+        FROM bookdescriptions AS livros
+        INNER JOIN bookauthorsbooks AS bookAutor ON livros.ISBN = bookAutor.ISBN
+        INNER JOIN bookauthors AS autores ON autores.AuthorID = bookAutor.AuthorID
+        where livros.title LIKE "%${nome}%" OR
+        livros.description LIKE "%${nome}%"
+        ORDER BY livros.title ASC `;
     }
     execSQLQuery(sql, res);
 
@@ -91,16 +105,16 @@ console.log('API funcionando!');
 function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
 
-        host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
-        user: 'admin',
-        password: 'denis123',
-        database: 'ecommerce',
+        //host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
+        //user: 'admin',
+        //password: 'denis123',
+        //database: 'ecommerce',
 
-        //host: 'localhost', 
-        //user: 'root', 
-        //password: '', 
+        host: 'localhost', 
+        user: 'root', 
+        password: '', 
         //database: 'sandvigbookstore' 
-        //database: 'livraria',
+        database: 'livraria',
 
         port: 3306
 
