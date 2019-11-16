@@ -1,87 +1,205 @@
-<br>
+<br />
 <div class="d-flex justify-content-center shadow p-3 mb-5 bg-white rounded ">
+  <article class="card-body col-10">
+    <h4 class="card-title text-center mb-4 mt-1">Complete seu Cadastro</h4>
+    <hr />
 
-    <article class="card-body col-10">
-        <h4 class="card-title text-center mb-4 mt-1">Complete seu Cadastro</h4>
-        <hr>
+    <form>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="nome">Primeiro nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            placeholder="Nome"
+            name="nomeP"
+            [(ngModel)]="cliente.nomeP"
+            maxlength="150"
+          />
+          <div class="valid-tooltip">
+            Tudo certo!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="Sobrenome">Sobrenome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Sobrenome"
+            placeholder="Sobrenome"
+            name="nomeP"
+            [(ngModel)]="cliente.nomeS"
+            maxlength="150"
+          />
+          <div class="valid-tooltip">
+            Tudo certo!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <input
+              type="email"
+              class="form-control "
+              id="email"
+              placeholder="Email"
+              name="email"
+              [(ngModel)]="cliente.email"
+              value="email"
+              maxlength="150"
+            />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="Cidade">Cidade</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Cidade"
+            placeholder="Cidade"
+            name="city"
+            [(ngModel)]="cliente.city"
+            maxlength="50"
+          />
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="Estado">Estado</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Estado"
+            placeholder="Informe a Sigla"
+            name="state"
+            [(ngModel)]="cliente.state"
+            maxlength="2"
+          />
+          <div class="invalid-tooltip">
+            Por favor, informe um estado válido.
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="CEP">CEP</label>
+          <input
+            type="text"
+            class="form-control"
+            id="CEP"
+            placeholder="CEP"
+            name="cep"
+            [(ngModel)]="cliente.cep"
+            maxlength="9"
+          />
+          <div class="invalid-tooltip">
+            Por favor, informe um CEP válido.
+          </div>
+        </div>
+        <div class="col-md-9 mb-3">
+          <label for="Endereço">Endereço</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Endereço"
+            placeholder="Endereço"
+            name="end"
+            [(ngModel)]="cliente.end"
+            maxlength="150"
+          />
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="Numero">Nº</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Numero"
+            placeholder="Numero"
+            name="number"
+            [(ngModel)]="cliente.number"
+            maxlength="10"
+          />
+        </div>
 
-        <form class="needs-validation" novalidate>
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationTooltip01">Primeiro nome</label>
-                    <input type="text" class="form-control" id="validationTooltip01" placeholder="Nome" value=""
-                        required>
-                    <div class="valid-tooltip">
-                        Tudo certo!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationTooltip02">Sobrenome</label>
-                    <input type="text" class="form-control" id="validationTooltip02" placeholder="Sobrenome" value=""
-                        required>
-                    <div class="valid-tooltip">
-                        Tudo certo!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationTooltipUsername">CPF</label>
-                    <div class="input-group">
+        <div class="col-md-11 mb-3">
+          <label for="Referencia">Ponto de Referencia</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Referencia"
+            placeholder="Ponto de Referencia"
+            name="referencia"
+            [(ngModel)]="cliente.referencia"
+            maxlength="150"
+          />
+          <div class="invalid-tooltip">
+            Por favor, informe um CEP válido.
+          </div>
+        </div>
+      </div>
 
-                        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="CPF"
-                            aria-describedby="validationTooltipUsernamePrepend" required>
-                        <div class="invalid-tooltip">
-                            CPF invalido
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationTooltip03">Cidade</label>
-                    <input type="text" class="form-control" id="validationTooltip03" placeholder="Cidade" required>
-                    <div class="invalid-tooltip">
-                        Por favor, informe uma cidade válida.
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationTooltip04">Estado</label>
-                    <input type="text" class="form-control" id="validationTooltip04" placeholder="Estado" required>
-                    <div class="invalid-tooltip">
-                        Por favor, informe um estado válido.
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationTooltip05">CEP</label>
-                    <input type="text" class="form-control" id="validationTooltip05" placeholder="CEP" required>
-                    <div class="invalid-tooltip">
-                        Por favor, informe um CEP válido.
-                    </div>
-                </div>
-                <div class="col-md-9 mb-3">
-                    <label for="validationTooltip05">Endereço</label>
-                    <input type="text" class="form-control" id="validationTooltip05" placeholder="Endereço" required>
+      <div
+        *ngIf="
+          cliente.referencia != null &&
+          cliente.number != null &&
+          cliente.end != null &&
+          cliente.state != null &&
+          cliente.cep != null &&
+          cliente.city != null &&
+          cliente.email != null &&
+          cliente.nomeS != null &&
+          cliente.nomeP != null
+        "
+      >
+        <button class="btn btn-primary" (click)="cadastro()">Enviar</button>
+      </div>
 
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationTooltip05">Nº</label>
-                    <input type="number" class="form-control" id="validationTooltip05" placeholder="Numero" required>
+      <div
+        *ngIf="
+          cliente.referencia == null ||
+          cliente.number == null ||
+          cliente.end == null ||
+          cliente.state == null ||
+          cliente.cep == null ||
+          cliente.city == null ||
+          cliente.email == null ||
+          cliente.nomeS == null ||
+          cliente.nomeP == null
+        "
+      >
+        <button class="btn btn-danger" disabled>
+          Preenchar todos os campos
+        </button>
+      </div>
+      <br />
+      <div
+        *ngIf="resposta.protocol41 === true"
+        class="alert alert-success"
+        role="alert"
+      >
+        Cadastro Realizado com sucesso
 
-                </div>
+        <br />
+      </div>
 
-                <div class="col-md-11 mb-3">
-                    <label for="validationTooltip05">Ponto de Referencia</label>
-                    <input type="text" class="form-control" id="validationTooltip05" placeholder="Ponto de Referencia"
-                        required>
-                    <div class="invalid-tooltip">
-                        Por favor, informe um CEP válido.
-                    </div>
-                </div>
-
-            </div>
-
-            <button class="btn btn-primary" (click)="cadastro()">Enviar</button>
-        </form>
-    </article>
-
+      <div  *ngIf="resposta.protocol41 === true">
+      <a
+        routerLink="/home"
+        style="margin-right: 15px;"
+        class="btn btn-secondary btn-lg active"
+        role="button"
+        aria-pressed="true"
+        >Continuar comprando</a
+      >
+      <a
+        routerLink="/ordemconfirmacao"
+        style="margin-right: 15px;"
+        class="btn btn-secondary btn-lg active"
+        role="button"
+        aria-pressed="true"
+        >Finalizar Pedido</a
+      >
+    </div>
+    </form>
+  </article>
 </div>
