@@ -11,15 +11,15 @@ export class HomeComponent implements OnInit {
 
   nomeLivro: String;
   colecaoLivros: any;
-  umLivro:any;
+  umLivro: any;
   dadosCategoria: any = {};
   categoria: any;
-  erroC:boolean;
-  erroP:boolean;
-  colecaoCategorias: any ;
+  erroC: boolean;
+  erroP: boolean;
+  colecaoCategorias: any;
   page: boolean;
-  
-  
+
+
 
 
   constructor(private httpClient: HttpClient) { }
@@ -27,10 +27,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.page = true;
     this.umLivro = {};
-    this.nomeLivro='';
-    this.erroC=false;
-    this.erroP=false;
-    
+    this.nomeLivro = '';
+    this.erroC = false;
+    this.erroP = false;
+
 
     const req1 = this.httpClient.get("http://localhost:3000/livros").toPromise();
     req1.then((livros) => {
@@ -46,43 +46,40 @@ export class HomeComponent implements OnInit {
   }
 
   pesquisar() {
-    this.erroP=false;
-    this.erroC=false;
+    this.erroP = false;
+    this.erroC = false;
     this.page = true;
     const req = this.httpClient.get(`http://127.0.0.1:3000/pesquisa/${this.nomeLivro}`).toPromise();
     req.then((livros) => {
       this.colecaoLivros = livros;
       livros[0].AuthorID;
     }).catch((erro) => {
-        this.erroP=true;
-     
+      this.erroP = true;
+
     });
   }
 
-  categorias(){
-      this.erroC=false;
-      this.erroP=false;
-      this.page = true;
-      this.colecaoLivros={};
-      const req = this.httpClient.get(`http://127.0.0.1:3000/categoria/${this.dadosCategoria.CategoryID}`).toPromise();
-      req.then((livros) => {
-        this.colecaoLivros = livros;
-      })
-      if (this.dadosCategoria.CategoryID == 8) this.erroC=true;   
-      
-      
-    
-    
+  categorias() {
+    this.erroC = false;
+    this.erroP = false;
+    this.page = true;
+    this.colecaoLivros = {};
+    const req = this.httpClient.get(`http://127.0.0.1:3000/categoria/${this.dadosCategoria.CategoryID}`).toPromise();
+    req.then((livros) => {
+      this.colecaoLivros = livros;
+    })
+    if (this.dadosCategoria.CategoryID == 8) this.erroC = true;
+
 
   }
 
 
-  oferta(livro){
+  oferta(livro) {
     this.page = false;
     this.umLivro = livro;
   }
 
-  autor(livro){
+  autor(livro) {
     this.page = true;
     const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${livro.AuthorID}`).toPromise();
     req.then((livros) => {

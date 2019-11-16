@@ -9,8 +9,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 
 const APP_ROUTES: Routes = [
-  {path: 'cadastro',component: CadastroComponent},
-  {path: 'login',component: LoginComponent},
+  {path: 'cadastro', component: CadastroComponent},
+  {path: 'login', component: LoginComponent},
   { path: '', component: HomeComponent },
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'home', component: HomeComponent},
