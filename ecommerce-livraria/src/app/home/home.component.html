@@ -98,7 +98,7 @@
       </div>
 
 
-      <a routerLink="/carrinho">
+      <a [routerLink]="['/carrinho',umLivro.ISBN]">
         <!--<img class="addToCart" src=" " alt="Add ao carinho" title="Add ao carinho"></a> -->
         <img class="addToCart"
           src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-cart-small.gif"
@@ -116,7 +116,9 @@
 
     </div>
 
-
     <!-- Div que mostra a pagina de adicao no carrinho-->
+    <div>
+
+    </div>
 
   </div>

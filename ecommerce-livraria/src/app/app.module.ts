@@ -13,6 +13,8 @@ import { routing } from './app.routing';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { LoginComponent } from './login/login.component';
+import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 
 
@@ -25,6 +27,8 @@ import { LoginComponent } from './login/login.component';
     CadastroComponent,
     CarrinhoComponent,
     LoginComponent,
+    OrdemconfirmacaoComponent,
+    HistoricoComponent,
   ],
   imports: [
     BrowserModule,

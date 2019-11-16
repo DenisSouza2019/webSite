@@ -125,16 +125,16 @@ console.log('API funcionando!');
 function execSQLQuery(sqlQry, res) {
   const connection = mysql.createConnection({
 
-    host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'denis123',
-    database: 'ecommerce',
+    //host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
+    //user: 'admin',
+    //password: 'denis123',
+    //database: 'ecommerce',
 
-    //host: 'localhost',
-    //user: 'root',
-    // password: '',
+    host: 'localhost',
+    user: 'root',
+    password: '',
     // database: 'sandvigbookstore',
-    //database: 'livraria',
+    database: 'livraria',
 
     port: 3306
 
