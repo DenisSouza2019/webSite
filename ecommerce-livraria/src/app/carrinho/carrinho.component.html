@@ -1,137 +1,173 @@
-<br>
+<br />
 <div class="shadow p-3 mb-5 bg-white rounded">
-<div class="row">
+  <div class="row">
+    <!--DIV REFERENTE A COLUNA DE PESQUISA E SELEC DE CATEGORIA-->
+    <div class="col-sm-4">
+      <div class="list-group" style="width: 13rem;">
+        <div class="card-header text-center">
+          Pesquise
+        </div>
+        <input
+          class="form-control mr-sm-2"
+          type="text"
+          name="Nome"
+          id="Nome"
+          [(ngModel)]="nomeLivro"
+          placeholder="Insira nome do livro"
+        />
+        <button
+          class="btn btn-outline-success my-2 my-sm-2"
+          (click)="pesquisar()"
+        >
+          Pesquisar
+        </button>
+      </div>
 
-<!--DIV REFERENTE A COLUNA DE PESQUISA E SELEC DE CATEGORIA-->
-<div class="col-sm-4">
-  <div class="list-group" style="width: 13rem;">
-    <div class="card-header text-center">
-      Pesquise
-    </div>
-    <input class="form-control mr-sm-2" type="text" name="Nome" id="Nome" [(ngModel)]="nomeLivro"
-      placeholder="Insira nome do livro">
-    <button class="btn btn-outline-success my-2 my-sm-2" (click)="pesquisar()">Pesquisar</button>
-  </div>
-
-  <br>
-  <div class="list-group" style="width: 13rem;">
-    <div class="card-header text-center">
-      Categorias
-    </div>
-    <select class="browser-default custom-select" type="text" [(ngModel)]="dadosCategoria" (click)="categorias()">
-      <option *ngFor="let item of colecaoCategorias" [ngValue]="item">{{item.CategoryName}}</option>
-    </select>
-
-
-
-  </div>
-</div>
-
-<!--DIV POR LISTAR CARINHO-->
-<div class="col-sm-8">
-
-  <div id="pageContent">
-
-    <p class="pageTitle2"> 10 items in your cart </p>
-    <table class="table table-bordered" id="cart">
-      <tbody>
-        <tr>
-          <th>Title</th>
-
-          <th>Qty</th>
-
-          <th>Price</th>
-
-          <th>Total</th>
-
-          <th></th>
-
-        </tr>
-        <tr>
-          <td><a class="booktitle" href="ProductPage.php?isbn=007184158X">JavaScript: 20 Lessons to Successful Web
-              Development</a></td>
-          <td>
-            2
-          </td>
-          <td class="bookPrice">
-            $30.39</td>
-          <td class="bookPrice">
-            $60.78</td>
-          <td style="text-align:center">
-            <a href="?addISBN=007184158X">Add</a><br>
-            <a href="?deleteISBN=007184158X">Remove</a>
-          </td>
-        </tr>
-        <tr>
-          <td><a class="booktitle" href="ProductPage.php?isbn=0596006810">Programming PHP</a></td>
-          <td>
-            1
-          </td>
-          <td class="bookPrice">
-            $21.11</td>
-          <td class="bookPrice">
-            $21.11</td>
-          <td style="text-align:center">
-            <a href="?addISBN=0596006810">Add</a><br>
-            <a href="?deleteISBN=0596006810">Remove</a>
-          </td>
-        </tr>
-        <tr>
-          <td><a class="booktitle" href="ProductPage.php?isbn=0672325675">Teach Yourself SQL in 10 Minutes</a></td>
-          <td>
-            7
-          </td>
-          <td class="bookPrice">
-            $11.99</td>
-          <td class="bookPrice">
-            $83.94</td>
-          <td style="text-align:center">
-            <a href="?addISBN=0672325675">Add</a><br>
-            <a href="?deleteISBN=0672325675">Remove</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <br>
-
-    <table class="cartTotal">
-      <tbody>
-        <tr>
-          <td> Sub-Total:</td>
-          <td align="right"> $165.84 </td>
-        </tr>
-        <tr>
-          <td> Shipping:*</td>
-          <td align="right"> $12.40 </td>
-        </tr>
-        <tr>
-          <td><b>Total:</b></td>
-          <td align="right"><b> $178.24 </b></td>
-        </tr>
-      </tbody>
-    </table>
-
-
-    <div class="cartIcons">
-      <a routerLink="/home"> <img border="0"
-          src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/continue-shopping.gif"
-          width="121" height="19" alt="Continue shopping"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a routerLink="/login"> <img border="0"
-          src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/proceed-to-checkout.gif"
-          width="183" height="31"  alt="Proceed to checkout"></a>
+      <br />
+      <div class="list-group" style="width: 13rem;">
+        <div class="card-header text-center">
+          Categorias
+        </div>
+        <select
+          class="browser-default custom-select"
+          type="text"
+          [(ngModel)]="dadosCategoria"
+          (click)="categorias()"
+        >
+          <option *ngFor="let item of colecaoCategorias" [ngValue]="item">{{
+            item.CategoryName
+          }}</option>
+        </select>
+      </div>
     </div>
 
 
-    <p id="shipping">* Shipping is $3.49 for the first book and $.99 for each additional book. To assure
-      reliable delivery and to keep your costs low we send all books via UPS ground. </p>
+    <!--DIV POR LISTAR CARINHO-->
+    <div class="col-sm-8">
+      <div id="pageContent">
+        <p class="pageTitle2">10 items in your cart</p>
+        <table class="table table-bordered" id="cart">
+          <tbody>
+            <tr>
+              <th>Title</th>
 
+              <th>Qty</th>
 
+              <th>Price</th>
 
-    <!-- end page content *************** -->
+              <th>Total</th>
+
+              <th></th>
+            </tr>
+            <tr>
+              <td>
+                <a class="booktitle" href="ProductPage.php?isbn=007184158X"
+                  >JavaScript: 20 Lessons to Successful Web Development</a
+                >
+              </td>
+              <td>
+                2
+              </td>
+              <td class="bookPrice">
+                $30.39
+              </td>
+              <td class="bookPrice">
+                $60.78
+              </td>
+              <td style="text-align:center">
+                <a href="?addISBN=007184158X">Add</a><br />
+                <a href="?deleteISBN=007184158X">Remove</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a class="booktitle" href="ProductPage.php?isbn=0596006810"
+                  >Programming PHP</a
+                >
+              </td>
+              <td>
+                1
+              </td>
+              <td class="bookPrice">
+                $21.11
+              </td>
+              <td class="bookPrice">
+                $21.11
+              </td>
+              <td style="text-align:center">
+                <a href="?addISBN=0596006810">Add</a><br />
+                <a href="?deleteISBN=0596006810">Remove</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a class="booktitle" href="ProductPage.php?isbn=0672325675"
+                  >Teach Yourself SQL in 10 Minutes</a
+                >
+              </td>
+              <td>
+                7
+              </td>
+              <td class="bookPrice">
+                $11.99
+              </td>
+              <td class="bookPrice">
+                $83.94
+              </td>
+              <td style="text-align:center">
+                <a href="?addISBN=0672325675">Add</a><br />
+                <a href="?deleteISBN=0672325675">Remove</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+
+        <table class="cartTotal">
+          <tbody>
+            <tr>
+              <td>Sub-Total:</td>
+              <td align="right">$165.84</td>
+            </tr>
+            <tr>
+              <td>Shipping:*</td>
+              <td align="right">$12.40</td>
+            </tr>
+            <tr>
+              <td><b>Total:</b></td>
+              <td align="right"><b> $178.24 </b></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cartIcons">
+          <a routerLink="/home">
+            <img
+              border="0"
+              src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/continue-shopping.gif"
+              width="121"
+              height="19"
+              alt="Continue shopping"/></a
+
+          >&nbsp;&nbsp;&nbsp;&nbsp;
+          <a routerLink="/login">
+            <img
+              border="0"
+              src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/proceed-to-checkout.gif"
+              width="183"
+              height="31"
+              alt="Proceed to checkout"
+          /></a>
+        </div>
+
+        <p id="shipping">
+          * Shipping is $3.49 for the first book and $.99 for each additional
+          book. To assure reliable delivery and to keep your costs low we send
+          all books via UPS ground.
+        </p>
+
+        <!-- end page content *************** -->
+      </div>
+    </div>
   </div>
-
-</div>
-
-</div>
-
 </div>

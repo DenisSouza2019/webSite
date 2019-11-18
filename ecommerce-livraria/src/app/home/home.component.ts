@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
 
   }
 
+  // Função que pesquisa um livro pelo nome e retorna 
+  // lista de livro ou uma mensagem de nao encontrado
   pesquisar() {
     this.erroP = false;
     this.erroC = false;
@@ -59,6 +61,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Função que pesquisa um livro pela categoria e retorna 
+  // lista de livro ou uma mensagem de nao encontrado
   categorias() {
     this.erroC = false;
     this.erroP = false;
@@ -73,12 +77,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-
+  // Função que mostra os detalhes de apenas um livro 
   oferta(livro) {
     this.page = false;
     this.umLivro = livro;
   }
 
+  // Função que lista todos os livro pelo ID do autor
   autor(livro) {
     this.page = true;
     const req = this.httpClient.get(`http://127.0.0.1:3000/autor/${livro.AuthorID}`).toPromise();
