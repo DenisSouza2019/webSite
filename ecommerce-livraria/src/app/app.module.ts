@@ -20,6 +20,8 @@ import { CommonModule } from '@angular/common';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
+import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
     PesquisaComponent,
     CategoriaComponent,
     SitefeaturesComponent,
+    OrdemconfirmacaoComponent,
+    HistoricoComponent,
   ],
   imports: [
     BrowserModule,

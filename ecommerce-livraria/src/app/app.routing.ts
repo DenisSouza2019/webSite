@@ -11,8 +11,12 @@ import { LivrosComponent } from './livros/livros.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
+import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 const APP_ROUTES: Routes = [
+  {path: 'historico', component: HistoricoComponent},
+  {path: 'ordemconfirmacao', component: OrdemconfirmacaoComponent},
   { path: '', redirectTo:  '/livros', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: LoginComponent },

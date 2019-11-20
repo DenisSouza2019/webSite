@@ -31,4 +31,6 @@ export class WebservicesService {
     return this.httpClient.get(`${this.baseUrl}pesquisa/${texto}`);
   }
 
+  
+
 }

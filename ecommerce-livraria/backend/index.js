@@ -150,8 +150,8 @@ function execSQLQuery(sqlQry, res) {
 
     host: 'localhost',user: 'root',password: '',
 
-    database: 'sandvigbookstore',
-    //database: 'livraria',
+    //database: 'sandvigbookstore',
+    database: 'livraria',
 
     port: 3306
 

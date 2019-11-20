@@ -1,21 +1,27 @@
-<div class='container'>
-  <div class="row">
-    <div class="col-lg-3">
+
+  
+    <div class="text-center">
       <a routerLink="/livros">
-        <img src="/assets/img/logo.png" alt="GeekBooks">
+        <img src="/assets/img/logo.png" class="rounded" alt="GeekBooks">
       </a>
     </div>
 
-    <div class="col-lg-7">
-      <a routerLink="/login"><i style="margin: 0 15px;" class="far fa-address-card"><span class="about"> Entre ou
-            Cadastre-se</span> </i></a>
-      |
-      <a routerLink="/carrinho" style="margin: 0 15px;" alt="shopping cart"><i class="fas fa-shopping-cart"></i></a>
-      |
-      <a routerLink="/sitefeatures" class="far fa-info-circle"> Site Features<span class="about"></span></a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="/livros">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <a routerLink="/login"><i style="margin: 0 15px;" class="far fa-address-card"><span class="about"> Entre ou
+                Cadastre-se</span> </i></a>
+          
+          <a routerLink="/carrinho" style="margin: 0 15px;" alt="shopping cart"><i class="fas fa-shopping-cart"></i></a>
+          
+          <a routerLink="/sitefeatures"style="margin: 50 35px;" alt="info"> <i class="fas fa-info"> Site Features</i></a>
+        </div>
+      </nav>
+  <br>
 
 
-
-    </div>
-  </div>
-</div>

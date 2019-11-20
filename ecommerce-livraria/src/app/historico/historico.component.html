@@ -1,0 +1,37 @@
+<div class="col-sm-7">
+  <p>Colocar uma lista de historico de compras</p>
+  <div class="news" *ngFor="let item of colecaoLivros">
+    <div class="title">
+      <a href="#" class="booktitle" (click)="oferta(item)"> {{ item.title }}</a>
+      <br />
+      <span class="authors"
+        >by
+        <a href="#" (click)="autor(item)"
+          >{{ item.nameF }} {{ item.nameL }}</a
+        ></span
+      ><br />
+    </div>
+    <a href="#" class="booktitle" (click)="oferta(item)">
+      <img
+        class="img-responsive"
+        src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{
+          item.ISBN
+        }}.01.THUMBZZZ.jpg"
+        alt=""
+      />
+    </a>
+
+    <div innerHTML="{{ item.description.substring(0, 200) }}..."></div>
+    <p class="more">
+      <a href="#" (click)="oferta(item)">read more</a
+      ><i class="fa fa-angle-right" aria-hidden="true"></i>
+    </p>
+    <hr />
+  </div>
+  <pre>
+      Deve ter uma
+      lista de historico de 
+      compra de um cliente com 
+      a quantidade de livros comprados
+      no cabeçalho</pre>
+</div>
