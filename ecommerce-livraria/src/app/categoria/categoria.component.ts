@@ -1,32 +1,29 @@
-import { WebservicesService } from './../webservices.service';
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
+import { WebservicesService } from "./../webservices.service";
+import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { Location } from "@angular/common";
 
 @Component({
-  selector: 'app-categoria',
-  templateUrl: './categoria.component.html',
-  styleUrls: ['./categoria.component.css']
+  selector: "app-categoria",
+  templateUrl: "./categoria.component.html",
+  styleUrls: ["./categoria.component.css"]
 })
 export class CategoriaComponent implements OnInit {
+  
 
-  sessionStorage: string;
-
-  livrosDaCategoria: any = {};
+  livrosDaCategoria: any;
   categoryID: any;
 
-  constructor(private route: ActivatedRoute, private ws: WebservicesService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private ws: WebservicesService) {}
 
   ngOnInit() {
-
-
-    //this.route.params.subscribe((objeto: any) => {
-    this.categoryID = +this.route.snapshot.params['id'];
-    // });
-
-    console.log(this.categoryID);
-    this.ws.getUmaCategoria(this.categoryID).subscribe((resposta: any) => {
-      this.livrosDaCategoria = resposta;
+    this.route.params.subscribe((params: any) => {
+      this.categoryID = params["id"];
+      this.ws.getUmaCategoria(this.categoryID).subscribe((resposta: any) => {
+        this.livrosDaCategoria = resposta;
+      });
     });
+
+    
   }
 }

@@ -1,26 +1,29 @@
-<div class="col-sm-7">
-
-
-
-    <div class="news" *ngFor="let item of livrosDaCategoria">
-      <div class="title">
-        <a href=# class="booktitle"> {{item.title}}</a>
-        <br>
-        <span class="authors">by <a href=# >{{item.nameF }} {{ item.nameL}}</a></span><br />
-
-      </div>
-      <a href=# class="booktitle">
-        <img class="img-responsive"
-          src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg" alt=""/>
-      </a>
-
-
-
-      <div innerHTML="{{item.description.substring(0,200) }}...">
-      </div>
-      <p class="more">
-        <a href=#>read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-      </p>
-      <hr>
-    </div>
+<div class="news" *ngFor="let item of livrosDaCategoria">
+  <div class="title">
+    <a href="#" class="booktitle"> {{ item.title }}</a>
+    <br />
+    <span class="authors"
+      >by <a href="#">{{ item.nameF }} {{ item.nameL }}</a></span
+    ><br />
   </div>
+  <a href="#" class="booktitle">
+    <img
+      class="img-responsive"
+      src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{
+        item.ISBN
+      }}.01.THUMBZZZ.jpg"
+      alt=""
+    />
+  </a>
+
+  <div innerHTML="{{ item.description.substring(0, 200) }}..."></div>
+  <p class="more">
+    <a href="#">read more</a
+    ><i class="fa fa-angle-right" aria-hidden="true"></i>
+  </p>
+  <hr />
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="livrosDaCategoria == ''">
+  Nessa categoria não a livros !
+</div>
