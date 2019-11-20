@@ -138,9 +138,10 @@ router.get('/valida/:email?', (req, res) => {
 
 //inicia o servidor
 app.listen(port);
-console.log('API funcionando!');
+//console.log('API funcionando!');
 
 function execSQLQuery(sqlQry, res) {
+
   const connection = mysql.createConnection({
 
     //host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
@@ -157,6 +158,13 @@ function execSQLQuery(sqlQry, res) {
 
   });
 
+  connection.connect(function(err) {
+    if (err){
+      console.log("Banco não conectado, alterar string de conexão !"); 
+    }else console.log('API funcionando!');
+  });
+
+
   connection.query(sqlQry, function (error, results, fields) {
     if (error)
       res.json(error);
@@ -165,5 +173,6 @@ function execSQLQuery(sqlQry, res) {
     connection.end();
     console.log('executou!');
   });
+
 }
 
