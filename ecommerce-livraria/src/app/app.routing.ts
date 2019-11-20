@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { LivrosComponent } from './livros/livros.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo:  '/livros', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const APP_ROUTES: Routes = [
   { path: 'livro-detalhes/:id', component: LivroDetalhesComponent},
   { path: 'pesquisa/:textoPesq', component: PesquisaComponent},
   { path: 'categoria/:id', component: CategoriaComponent},
-  { path: '**', component: LoginComponent}
+  { path: 'sitefeatures', component: SitefeaturesComponent},
+  { path: '**', component: LoginComponent} //sempre no final do arquivo!!!
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

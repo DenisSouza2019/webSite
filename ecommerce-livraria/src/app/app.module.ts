@@ -19,6 +19,7 @@ import { LivroDetalhesComponent } from './livros/livro-detalhes/livro-detalhes.c
 import { CommonModule } from '@angular/common';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
     LivroDetalhesComponent,
     PesquisaComponent,
     CategoriaComponent,
+    SitefeaturesComponent,
   ],
   imports: [
     BrowserModule,

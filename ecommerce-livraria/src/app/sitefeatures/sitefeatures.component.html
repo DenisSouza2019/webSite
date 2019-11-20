@@ -1,0 +1,95 @@
+<div>
+
+  <!--DIV RESPONSAVEL PELO TEXTO DO SITEFEATURES-->
+  
+        <div>
+     
+            <p class="pageTitle">Site Features</p>
+            <ul>
+              <li>Site desenvolvido por três alunos graduandos na disciplina de Desenvolvimento de Sistemas na WEB pela<a
+                  href="https://unifei.edu.br/"> Universidade Federal de Itajubá.</a> </li>
+              <li>As tecnologias utilizadas para o projeto foram Angular, Node e mySQL.</li>
+              <li>As iformações referentes aos produtos, clientes e pedidos foram armazenadas utilizando uma base de dados
+                mySQL.
+              </li>
+              <li><span class="subHead">Base de dados mySQL</span>
+                <ul>
+                  <li>Normalizada para a Terceira forma normal. As tables incluem:
+                    <ul>
+                      <li>descrição dos livros</li>
+                      <li>categoria dos livros</li>
+                      <li>relacionamento descrição-livros (vários para vários) </li>
+                      <li>autores</li>
+                      <li>relacionamento autor-livros (vários para vários) </li>
+                      <li>clientes</li>
+                      <li>pedidos</li>
+                      <li>itens pedidos (um para vários) </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><span class="subHead">Home page</span>
+                <ul>
+                  <li>Seleciona de forma aleatória três itens da base de dados, utilizando comandos SQL.</li>
+                  <li>Gera o menu de busca dinamicamente a partir da base de dados usando uma query SQL
+                    que mostra somente as categorias que realmente contêm livros.
+                  </li>
+                  <li>Limita e padroniza a descrição dos livros em até 250 caracteres.</li>
+                </ul>
+              </li>
+              <li><span class="subHead">Mecanismo de busca</span>
+                <ul>
+                  <li>Limpa os dados preenchidos por usuários para sua proteção contra ataques por injeções SQL e
+                    cross-site scripting. </li>
+                  <li>As buscas são feitas pelo título do livro, descrição, autor e
+                    campos de categorias na base de dados.</li>
+                  <li>A função mysql_num_rows() é utilizada para contar o número de livros encontrados pela busca.
+                  </li>
+                  <li>Responde educadamente por buscas que retornam nenhum resultado.</li>
+                </ul>
+              </li>
+              <li><span class="subHead">Shopping cart page</span>
+                <ul>
+                  <li>Uses a cookie to store the ISBNs of items in the
+                    cart.</li>
+                </ul>
+              </li>
+              <li><span class="subHead">Página de Checkout</span>
+                <ul>
+                  <li>Procura pelos emails existentes na base de dados
+                    as contas dos clientes e escreve nas informações de envio na forma da ordem de confirmação.</li>
+                  <li>O ID do usuário é criptografado utilizando o algoritmo Rijndael
+                  </li>
+                </ul>
+              </li>
+              <li><span class="subHead">Página de confirmação de pedido</span>
+                <ul>
+                  <li>Checa por carrinhos de compra e avisa o usuário caso o carrinho esteja vazio.</li>
+                  <li>Todos os campos são verificados para assegurar que há informação neles.</li>
+                  <li>Procura pelos emails existentes na base de dados e pede ao usuário para tentar novamente
+                    se o endereço não for encontrado.</li>
+                  <li>Modifications made to custo mer information are updated in
+                    the database.</li>
+                  <li>Order information are written to the database.</li>
+                  <li>An email is sent to the customer with the order
+                    information.</li>
+                  <li>The shopping cart is emptied by setting ItemCount to zero in the ShoppingCart cookie.</li>
+                </ul>
+              </li>
+              <li><span class="subHead">Order History Page</span>
+                <ul>
+                  <li>Searches the database for all orders associated with
+                    e-mail address</li>
+                  <li>If no matching email address is found user is prompted to
+                    try again.</li>
+                </ul>
+              </li>
+  
+              <li>Thanks to Amazon.com for the use of its
+                icons, book images and book descriptions.</li>
+  
+            </ul>
+  
+          </div>
+        </div>
+  
