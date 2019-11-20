@@ -43,9 +43,15 @@ router.get('/categorias', (req, res) => {
 // Retorna dados de apenas um livro
 router.get('/livro/:id?', (req, res) => {
   let filter = '';
-  if (req.params.id) filter = ' WHERE ISBN=' + parseInt(req.params.id);
-  execSQLQuery('SELECT * FROM bookdescriptions' + filter, res);
+  if (req.params.id) filter = ' WHERE bookAutor.ISBN = ' + parseInt(req.params.id);
+  execSQLQuery(`SELECT  livros.description,livros.edition,livros.ISBN,livros.pages,livros.price,
+  livros.pubdate,livros.publisher,livros.title,autores.nameF,autores.nameL,autores.AuthorID
+  FROM bookdescriptions as livros
+  INNER JOIN bookauthorsbooks AS bookAutor ON livros.ISBN = bookAutor.ISBN
+  INNER JOIN bookauthors AS autores ON autores.AuthorID = bookAutor.AuthorID
+  ` + filter, res);
 })
+
 
 // Retorna Livros pelo ID da categoria listar com ordem alfabetica
 router.get('/categoria/:id?', (req, res) => {
@@ -79,7 +85,6 @@ router.get('/autor/:id?', (req, res) => {
 // Lista todos os livros que tenha alguma string parecida com o titulo
 // ou descrição
 router.get('/pesquisa/:nome?', (req, res) => {
-  //const nome = req.body.nome.substring(0, 150);
   const nome = req.params.nome
 
   if (req.params.nome) {
@@ -144,10 +149,9 @@ function execSQLQuery(sqlQry, res) {
     //database: 'ecommerce',
 
     host: 'localhost',user: 'root',password: '',
-    //
-    //
-    //database: 'sandvigbookstore',
-    database: 'livraria',
+
+    database: 'sandvigbookstore',
+    //database: 'livraria',
 
     port: 3306
 

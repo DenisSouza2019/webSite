@@ -1,0 +1,28 @@
+<!--<div class="alert alert-danger" role="alert" *ngIf="erroP">
+  Nome do livro invalido, insera outro nome.
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="erroC">
+  Categoria sem Livros, selecione outra categoria
+</div>
+-->
+<div class="news" *ngFor="let item of livrosPesquisados">
+  <div class="title">
+    <a [routerLink]="['/livro-detalhes', item.ISBN]"> {{item.title}}</a>
+    <br>
+    <span class="authors">by <a routerLink="/livros">{{item.nameF }} {{ item.nameL}}</a></span><br />
+
+  </div>
+  <a [routerLink]="['/livro-detalhes', item.ISBN]">
+    <img class="img-responsive"
+      src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg" alt="" />
+  </a>
+
+
+
+  <div innerHTML="{{item.description.substring(0,200) }}...">
+  </div>
+  <p class="more">
+    <a [routerLink]="['/livro-detalhes', item.ISBN]">read more</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+  </p>
+  <hr>
+</div>

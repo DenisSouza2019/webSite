@@ -1,0 +1,50 @@
+
+<div class="bookTitle "> {{umLivro.title}}</div>
+<div class="authors">by <a href='#'>{{umLivro.nameF }} {{ umLivro.nameL}}</a></div>
+<a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.LZZZZZZZ.jpg">
+  <img class="Book" alt="umLivro.title" title="de"
+    src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.MZZZZZZZ.jpg"></a>
+<br />
+
+<div>
+  <span class="priceLabel">Preço de tabela: </span>
+  <span class="bookPriceList">
+    {{umLivro.price | currency:'BRL'}} </span>
+</div>
+
+<div>
+  <span class="priceLabel">Nosso preço:</span>
+  <span class="bookPriceB">
+    {{umLivro.price - umLivro.price*.2 | currency:'BRL'}} </span>
+</div>
+
+<div>
+  <span class="priceLabel">Desconto pra você:</span>
+  <span class="bookPriceB">
+    {{umLivro.price*.2 | currency:'BRL'}} (20%)</span><br />
+</div>
+
+<div class="bookDetails">
+  <div> <b>ISBN: </b> {{umLivro.ISBN}} </div>
+  <div> <b>Editora: </b> {{umLivro.publisher}}</div>
+  <div> <b>Paginas: </b> {{umLivro.pages}}</div>
+  <div> <b>Edição: </b> {{umLivro.edition}}</div>
+</div>
+
+
+<a routerLink="/carrinho" routerLinkActive="active">
+  <img class="addToCart"
+    src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-cart-small.gif"
+    alt="Add to cart" title="Add to cart"></a>
+
+
+
+<div innerHTML="{{umLivro.description }}">
+</div>
+
+<a routerLink="/carrinho" routerLinkActive="active">
+  <img class="addToCart"
+    src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-shopping-cart-blue.gif"
+    alt="Ir ao carinho" title="Ir ao carinho"></a>
+
+

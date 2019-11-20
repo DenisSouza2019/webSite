@@ -1,10 +1,11 @@
+import { WebservicesService } from './webservices.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
 
-import { AppRoutingModule} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { RodapeComponent } from './rodape/rodape.component';
@@ -13,10 +14,11 @@ import { routing } from './app.routing';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { LoginComponent } from './login/login.component';
-import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
-import { HistoricoComponent } from './historico/historico.component';
-
-
+import { LivrosComponent } from './livros/livros.component';
+import { LivroDetalhesComponent } from './livros/livro-detalhes/livro-detalhes.component';
+import { CommonModule } from '@angular/common';
+import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 @NgModule({
   declarations: [
@@ -27,17 +29,20 @@ import { HistoricoComponent } from './historico/historico.component';
     CadastroComponent,
     CarrinhoComponent,
     LoginComponent,
-    OrdemconfirmacaoComponent,
-    HistoricoComponent,
+    LivrosComponent,
+    LivroDetalhesComponent,
+    PesquisaComponent,
+    CategoriaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    routing
+    routing,
+    CommonModule,
   ],
-  providers: [],
+  providers: [WebservicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
