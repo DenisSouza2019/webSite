@@ -1,6 +1,5 @@
 import { WebservicesService } from './../webservices.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { isNumber } from 'util';
 import { Router } from '@angular/router';
 
@@ -14,7 +13,7 @@ export class HomeComponent implements OnInit {
   nomeLivro: string;
   colecaoCategorias: any;
 
-  constructor(private httpClient: HttpClient, private router: Router, private ws: WebservicesService) { }
+  constructor(private router: Router, private ws: WebservicesService) { }
 
   ngOnInit() {
 

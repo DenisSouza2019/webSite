@@ -13,10 +13,11 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
 import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
 import { HistoricoComponent } from './historico/historico.component';
+import { Erro404Component } from './erro404/erro404.component';
 
 const APP_ROUTES: Routes = [
-  {path: 'historico', component: HistoricoComponent},
-  {path: 'ordemconfirmacao', component: OrdemconfirmacaoComponent},
+  { path: 'historico', component: HistoricoComponent },
+  { path: 'ordemconfirmacao', component: OrdemconfirmacaoComponent },
   { path: '', redirectTo:  '/livros', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
@@ -29,7 +30,7 @@ const APP_ROUTES: Routes = [
   { path: 'pesquisa/:textoPesq', component: PesquisaComponent},
   { path: 'categoria/:id', component: CategoriaComponent},
   { path: 'sitefeatures', component: SitefeaturesComponent},
-  { path: '**', component: LoginComponent} //sempre no final do arquivo!!!
+  { path: '**', component: Erro404Component } // Sempre no final do arquivo!!!
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

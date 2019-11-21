@@ -101,7 +101,7 @@ router.get('/pesquisa/:nome?', (req, res) => {
 
 })
 
-// Cadastro de umas pesso no site
+// Cadastro de uma pessoa no site
 router.post('/add/cliente', (req, res) => {
 
   const nomeP = req.body.nomeP.substring(0, 150);
@@ -121,6 +121,16 @@ router.post('/add/cliente', (req, res) => {
   execSQLQuery(sql, res);
 });
 
+// Cadastro do livro no carrinho
+router.post(`/add/livro`, (req, res) => {
+  const orderID = req.body.orderID;
+  const custID = req.body.custID;
+  const orderdate = req.body.orderdate;
+
+  sql = `INSERT INTO bookorders (${orderID}, ${custID}, ${orderdate})`;
+
+  execSQLQuery(sql, res);
+})
 // Validação de login se o email existe no banco
 router.get('/valida/:email?', (req, res) => {
 
@@ -150,8 +160,8 @@ function execSQLQuery(sqlQry, res) {
 
     host: 'localhost',user: 'root',password: '',
 
-    //database: 'sandvigbookstore',
-    database: 'livraria',
+    database: 'sandvigbookstore',
+    //database: 'livraria',
 
     port: 3306
 

@@ -31,6 +31,10 @@ export class WebservicesService {
     return this.httpClient.get(`${this.baseUrl}pesquisa/${texto}`);
   }
 
-  
+  addLivro(umLivro) {
+    this.httpClient.post(`${this.baseUrl}add/livro`, umLivro).toPromise();
+    return 'Livro adicionado com sucesso';
+  }
+
 
 }

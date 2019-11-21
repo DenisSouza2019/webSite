@@ -22,6 +22,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
 import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
 import { HistoricoComponent } from './historico/historico.component';
+import { Erro404Component } from './erro404/erro404.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HistoricoComponent } from './historico/historico.component';
     SitefeaturesComponent,
     OrdemconfirmacaoComponent,
     HistoricoComponent,
+    Erro404Component,
   ],
   imports: [
     BrowserModule,

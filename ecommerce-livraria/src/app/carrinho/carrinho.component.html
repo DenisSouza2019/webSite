@@ -1,62 +1,31 @@
 <div id="pageContent">
 
-  <p class="pageTitle2"> 10 items in your cart </p>
+  <p class="pageTitle2" *ngIf="2 > totalPedido"> {{totalPedido}} item em seu carrinho </p>
+  <p class="pageTitle2" *ngIf="totalPedido > 1"> {{totalPedido}} itens em seu carrinho </p>
+
+
+
   <table class="table table-bordered" id="cart">
     <tbody>
-        <tr>
-            <th>Título</th>
-
-            <th>Qtde</th>
-
-            <th>Preço</th>
-
-            <th>Total</th>
-
-            <th></th>
-          </tr>
       <tr>
-        <td><a class="booktitle" href="ProductPage.php?isbn=007184158X">JavaScript: 20 Lessons to Successful Web
-            Development</a></td>
-        <td>
-          2
-        </td>
-        <td class="bookPrice">
-          $30.39</td>
-        <td class="bookPrice">
-          $60.78</td>
-        <td style="text-align:center">
-          <a href="?addISBN=007184158X">Adicionar</a><br>
-          <a href="?deleteISBN=007184158X">Remover</a>
-        </td>
+        <th>Título</th>
+
+        <th>Qtde</th>
+
+        <th>Preço</th>
+
+        <th>Total</th>
+
+        <th></th>
       </tr>
-      <tr>
-        <td><a class="booktitle" href="ProductPage.php?isbn=0596006810">Programming PHP</a></td>
-        <td>
-          1
-        </td>
-        <td class="bookPrice">
-          $21.11</td>
-        <td class="bookPrice">
-          $21.11</td>
-        <td style="text-align:center">
-          <a href="?addISBN=0596006810">Adicionar</a><br>
-          <a href="?deleteISBN=0596006810">Remover</a>
-        </td>
+      <tr *ngFor='let c of carrinho'>
+        <td>{{ c.objLivro.title }}</td>
+        <td>{{ c.qtdCart }}</td>
+        <td>{{ c.objLivro.price }}</td>
+        <td>{{ c.qtdCart*c.objLivro.price | currency:'BRL' }}</td>
+        <td> <button class="btn btn-primary" (click)="adicionar(c.objLivro)">Adiconar</button>&nbsp;&nbsp; <button class="btn btn-danger" (click)="remover(c.objLivro.ISBN)">Remover</button></td>
       </tr>
-      <tr>
-        <td><a class="booktitle" href="ProductPage.php?isbn=0672325675">Teach Yourself SQL in 10 Minutes</a></td>
-        <td>
-          7
-        </td>
-        <td class="bookPrice">
-          $11.99</td>
-        <td class="bookPrice">
-          $83.94</td>
-        <td style="text-align:center">
-          <a href="?addISBN=0672325675">Adicionar</a><br>
-          <a href="?deleteISBN=0672325675">Remover</a>
-        </td>
-      </tr>
+
     </tbody>
   </table>
   <br>
@@ -80,12 +49,10 @@
 
 
   <div class="cartIcons">
-    <a routerLink="/livros"> <img border="0"
-        src="https://renovagrafix.com.br/botaocontinuar.png" width="150"
+    <a routerLink="/livros"> <img border="0" src="https://renovagrafix.com.br/botaocontinuar.png" width="150"
         height="40" alt="Continuar comprando"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a routerLink="/login"> <img border="0"
-        src="https://renovagrafix.com.br/finalizarpedido.png"
-        width="150" height="40" alt="Concluir compra"></a>
+    <a routerLink="/login"> <img border="0" src="https://renovagrafix.com.br/finalizarpedido.png" width="150"
+        height="40" alt="Concluir compra"></a>
   </div>
 
 
