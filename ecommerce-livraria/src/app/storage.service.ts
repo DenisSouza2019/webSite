@@ -21,13 +21,12 @@ export class StorageService {
     if (cart == null || cart == undefined) {
       return;
     }
-    for (let c in cart) {
+    // tslint:disable-next-line: forin
+    for (const c in cart) {
       // if (cart.hasAttribute(c)) {
       const livro = cart[c];
-      console.log(livro);
-      console.log(isbn);
       if (livro.ISBN == isbn) {
-         cart.splice(cart.indexOf(livro), 1);
+        cart.splice(cart.indexOf(livro), 1);
 
         this.setItem('carrinho', cart); // Atualiza o array do carrinhos
         return;
@@ -38,7 +37,7 @@ export class StorageService {
 
 
   getCarrinho() {
-    let cart: any = this.getItem('carrinho');
+    const cart: any = this.getItem('carrinho');
     if (cart == null || cart == undefined) {
       return [];
     }
@@ -47,8 +46,8 @@ export class StorageService {
 
     cart.map((cartItem: any) => {
       let encontrou = false;
-      for (let a of arrayCart) {
-        if (a.objLivro.ISBN == cartItem.ISBN) {
+      for (const a of arrayCart) {
+        if (a.objLivro.ISBN === cartItem.ISBN) {
           a.qtdCart += 1;
           encontrou = true;
         }
@@ -64,6 +63,25 @@ export class StorageService {
     return arrayCart;
   }
 
+  getQtdFinalItens() {
+    const cart: any = this.getCarrinho();
+    let qtdFinalCart = 0;
+    cart.map((cartItem: any) => {
+      qtdFinalCart += cartItem.qtdCart;
+    });
+
+    return qtdFinalCart;
+  }
+
+  getSubTotal() {
+    const cart: any = this.getCarrinho();
+    let subtotal = 0;
+    cart.map((cartItem: any) => {
+      subtotal += cartItem.objLivro.price * cartItem.qtdCart ;
+    });
+
+    return subtotal;
+  }
 
   getItem(key: string) {
     return JSON.parse(sessionStorage.getItem(key));

@@ -1,28 +1,33 @@
 <br />
 <div class="d-flex justify-content-center shadow p-3 mb-5 bg-white rounded ">
-  <article class="card-body col-5">
-    <h4 class="card-title text-center mb-4 mt-1">DCI livros</h4>
+  <article class="card-body col-12">
+    <h4 class="card-title text-center mb-2 mt-1">Sua conta</h4>
     <hr />
     <div *ngIf="!flag">
-            <p class="text-danger text-center">Email invalido ! </p>
+      <p class="text-danger text-center">Email invalido ! </p>
     </div>
-    
+    <div class="row px-md-n5">
+      <div class="col px-md-4">
+        <div >Comprar online é rápido e fácil!</div>
+      </div>
+      <div class="col px-md-4">
+        <div >
+          <div *ngIf="qtdItensCart > 1">Você tem {{ qtdItensCart }} itens em seu carrinho!</div>
+          <div *ngIf=" qtdItensCart == 1 ">Você tem {{ qtdItensCart }} item em seu carrinho!</div>
+          <div *ngIf=" qtdItensCart == 0 ">Seu carrinho está vazio!</div>
+        </div>
+      </div>
+    </div>
+
 
     <form data-toggle="validator" role="form">
       <div class="form-group">
-        <div class="input-group">
+        <div class="mx-auto" class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
           </div>
-          <input
-            name="email"
-            class="form-control"
-            placeholder="Email or login"
-            type="email"
-            [(ngModel)]="login.email"
-            value=""
-            maxlength="150"
-          />
+          <input name="email" class="form-control" placeholder="Email or login" type="email" [(ngModel)]="login.email"
+            value="" maxlength="150" />
         </div>
         <!-- input-group.// -->
       </div>
@@ -30,11 +35,7 @@
       <div class="form-group"></div>
       <!-- form-group// -->
       <div class="form-group">
-        <button
-          
-          class="btn btn-primary btn-block"
-          (click)="entrar()"
-        >
+        <button class="btn btn-primary btn-block" (click)="entrar()">
           Login
         </button>
       </div>

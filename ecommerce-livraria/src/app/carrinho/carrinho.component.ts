@@ -10,11 +10,12 @@ import { StorageService } from '../storage.service';
 })
 export class CarrinhoComponent implements OnInit {
 
+  qtdItensCart = 0;
+  subTotalPedido = 0;
+  frete = 0;
   total = 0;
-  qtd = 1;
-  totalItem = 1;
-  totalPedido = 1;
   carrinho: any = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -24,19 +25,33 @@ export class CarrinhoComponent implements OnInit {
 
   ngOnInit() {
     this.listaCarrinho();
+    this.getQtdFinalItens();
+    this.getSubTotalPedido();
   }
 
   listaCarrinho() {
     this.carrinho = this.storage.getCarrinho();
   }
 
+  getQtdFinalItens() {
+    this.qtdItensCart = this.storage.getQtdFinalItens();
+  }
+
+  getSubTotalPedido() {
+    this.subTotalPedido  = this.storage.getSubTotal();
+  }
+
   adicionar(objLivro) {
     this.storage.addCarrinho(objLivro);
     this.listaCarrinho();
+    this.getQtdFinalItens();
+    this.getSubTotalPedido();
   }
 
   remover(isbn) {
     this.storage.removeCarrinho(isbn);
     this.listaCarrinho();
+    this.getQtdFinalItens();
+    this.getSubTotalPedido();
   }
 }

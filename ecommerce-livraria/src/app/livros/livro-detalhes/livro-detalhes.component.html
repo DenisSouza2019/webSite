@@ -42,7 +42,7 @@
 <div innerHTML="{{umLivro.description }}">
 </div>
 
-<a routerLink="/carrinho" routerLinkActive="active">
+<a (click)="addLivro()">
   <img class="addToCart"
     src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-shopping-cart-blue.gif"
     alt="Ir ao carinho" title="Ir ao carinho"></a>

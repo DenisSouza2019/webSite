@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: "app-login",
@@ -14,13 +15,15 @@ export class LoginComponent implements OnInit {
   erro: any;
   front: any;
   numero: number;
+  qtdItensCart: number;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private storage: StorageService) { }
 
   ngOnInit() {
     this.flag = true;
     this.login = {};
     this.dados = {};
+    this.getQtdFinalItens();
   }
 
   entrar() {
@@ -44,5 +47,9 @@ export class LoginComponent implements OnInit {
       .catch(erro => {
         this.flag = false;
       });
+  }
+
+  getQtdFinalItens() {
+    this.qtdItensCart = this.storage.getQtdFinalItens();
   }
 }

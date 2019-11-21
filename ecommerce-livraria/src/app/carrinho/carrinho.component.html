@@ -1,11 +1,11 @@
 <div id="pageContent">
 
-  <p class="pageTitle2" *ngIf="2 > totalPedido"> {{totalPedido}} item em seu carrinho </p>
-  <p class="pageTitle2" *ngIf="totalPedido > 1"> {{totalPedido}} itens em seu carrinho </p>
+  <p class="pageTitle2" *ngIf="2 > qtdItensCart"> {{qtdItensCart}} item em seu carrinho </p>
+  <p class="pageTitle2" *ngIf="qtdItensCart > 1"> {{qtdItensCart}} itens em seu carrinho </p>
 
 
 
-  <table class="table table-bordered" id="cart">
+  <table class="table table-bordered" id="cart" *ngIf="subTotalPedido > 0 ">
     <tbody>
       <tr>
         <th>Título</th>
@@ -19,40 +19,39 @@
         <th></th>
       </tr>
       <tr *ngFor='let c of carrinho'>
-        <td>{{ c.objLivro.title }}</td>
+        <td><a [routerLink]="['/livro-detalhes', c.objLivro.ISBN]">{{ c.objLivro.title }}</a></td>
         <td>{{ c.qtdCart }}</td>
         <td>{{ c.objLivro.price }}</td>
         <td>{{ c.qtdCart*c.objLivro.price | currency:'BRL' }}</td>
-        <td> <button class="btn btn-primary" (click)="adicionar(c.objLivro)">Adiconar</button>&nbsp;&nbsp; <button class="btn btn-danger" (click)="remover(c.objLivro.ISBN)">Remover</button></td>
+        <td> <button class="btn btn-primary" (click)="adicionar(c.objLivro)">Adiconar</button>&nbsp;&nbsp; <button
+            class="btn btn-danger" (click)="remover(c.objLivro.ISBN)">Remover</button></td>
       </tr>
 
     </tbody>
   </table>
   <br>
 
-  <table class="cartTotal">
+  <table class="cartTotal" *ngIf="subTotalPedido > 0 ">
     <tbody>
       <tr>
         <td> Sub-Total:</td>
-        <td align="right"> R$165.84 </td>
+        <td align="right"> {{ subTotalPedido | currency: 'BRL' }} </td>
       </tr>
       <tr>
-        <td> Envio:*</td>
-        <td align="right"> R$12.40 </td>
+        <td> Frete:*</td>
+        <td align="right"> {{ qtdItensCart*.99+2.5 | currency: 'BRL' }} </td>
       </tr>
       <tr>
         <td><b>Total:</b></td>
-        <td align="right"><b> R$178.24 </b></td>
+        <td align="right"><b> {{ subTotalPedido+(qtdItensCart*.99+2.5) | currency: 'BRL' }} </b></td>
       </tr>
     </tbody>
   </table>
 
 
   <div class="cartIcons">
-    <a routerLink="/livros"> <img border="0" src="https://renovagrafix.com.br/botaocontinuar.png" width="150"
-        height="40" alt="Continuar comprando"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a routerLink="/login"> <img border="0" src="https://renovagrafix.com.br/finalizarpedido.png" width="150"
-        height="40" alt="Concluir compra"></a>
+    <a routerLink="/livros" class="btn btn-warning">Continuar comprando </a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a routerLink="/login" class="btn btn-success">Concluir compra</a>
   </div>
 
 
