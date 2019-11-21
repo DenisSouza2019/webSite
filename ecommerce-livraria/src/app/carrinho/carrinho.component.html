@@ -21,7 +21,7 @@
       <tr *ngFor='let c of carrinho'>
         <td><a [routerLink]="['/livro-detalhes', c.objLivro.ISBN]">{{ c.objLivro.title }}</a></td>
         <td>{{ c.qtdCart }}</td>
-        <td>{{ c.objLivro.price }}</td>
+        <td>{{ c.objLivro.price | currency:'BRL' }}</td>
         <td>{{ c.qtdCart*c.objLivro.price | currency:'BRL' }}</td>
         <td> <button class="btn btn-primary" (click)="adicionar(c.objLivro)">Adiconar</button>&nbsp;&nbsp; <button
             class="btn btn-danger" (click)="remover(c.objLivro.ISBN)">Remover</button></td>

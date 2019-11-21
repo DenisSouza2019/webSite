@@ -22,6 +22,7 @@ export class LivroDetalhesComponent implements OnInit {
       this.bookISBN = params.id;
       this.ws.getLivro(this.bookISBN).subscribe((resposta: any) => {
         this.umLivro = resposta[0];
+        this.umLivro.price -= this.umLivro.price * .2;
       });
     });
   }
