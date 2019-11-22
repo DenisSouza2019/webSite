@@ -34,8 +34,13 @@
       <!-- form-group// -->
       <div class="form-group"></div>
       <!-- form-group// -->
-      <div class="form-group">
+      <div class="form-group" *ngIf="login.email != null">
         <button class="btn btn-primary btn-block" (click)="entrar()">
+          Login
+        </button>
+      </div>
+      <div class="form-group" *ngIf="login.email == null">
+        <button disabled class="btn btn-primary btn-block" (click)="entrar()">
           Login
         </button>
       </div>

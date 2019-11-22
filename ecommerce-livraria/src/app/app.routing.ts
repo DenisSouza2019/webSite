@@ -20,6 +20,7 @@ const APP_ROUTES: Routes = [
   { path: 'ordemconfirmacao', component: OrdemconfirmacaoComponent },
   { path: '', redirectTo:  '/livros', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
+  { path: 'cadastro/:email', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'home', component: HomeComponent},

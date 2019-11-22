@@ -144,11 +144,50 @@ router.get('/valida/:email?', (req, res) => {
 })
 
 
+// Retorna o pedido pelo ID no cliente
+router.get('/ordemdetalhes/:id?', (req, res) => {
+  const id = req.params.id
+
+  if (req.params.id) {
+    sql = `SELECT  a.orderID, c.street, l.title, i.qty, l.price, i.price
+    FROM bookcustomers as c
+    inner join bookorders as a on a.custID = c.custID
+    inner join bookorderitems as i on i.orderID = a.orderID
+    inner join bookdescriptions as l on l.ISBN = i.ISBN
+    where c.custID =${id} `;
+  }
+  execSQLQuery(sql, res);
+
+})
+
+// Salvando pedido no banco
+router.post('/add/carinho', (req, res) => {
+
+  const custID = parseInt(req.body.custID.substring(0, 150));
+  const ISBN = req.body.ISBN.substring(0, 150);
+  const qtd = parseInt(req.body.qtd.substring(0, 150));
+  const price = parseFloat(req.body.price.substring(0, 50));
+  const orderdate = parseInt(req.body.orderdate.substring(0,50));
+ 
+  
+  sql = `insert into bookorders value (0,${custID},${orderdate}); `;
+
+  execSQLQuery(sql, res);
+
+
+  
+  
+});
+
+
+
+
 //*******************FIM****************************** */
 
 //inicia o servidor
 app.listen(port);
 //console.log('API funcionando!');
+  id:'';
 
 function execSQLQuery(sqlQry, res) {
 
@@ -161,8 +200,8 @@ function execSQLQuery(sqlQry, res) {
 
     host: 'localhost',user: 'root',password: '',
 
-    database: 'sandvigbookstore',
-    //database: 'livraria',
+    //database: 'sandvigbookstore',
+    database: 'livraria',
 
     port: 3306
 
@@ -174,12 +213,13 @@ function execSQLQuery(sqlQry, res) {
     }else console.log('API funcionando!');
   });
 
-
   connection.query(sqlQry, function (error, results, fields) {
     if (error)
       res.json(error);
     else
       res.json(results);
+     
+
     connection.end();
     console.log('executou!');
   });

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         }
       })
       .catch(erro => {
-        this.flag = false;
+        this.router.navigate(["/cadastro",this.login.email]);
       });
   }
 

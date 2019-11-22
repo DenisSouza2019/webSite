@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,12 +11,20 @@ export class CadastroComponent implements OnInit {
 
   cliente: any;
   resposta: any;
-
-  constructor(private http: HttpClient) { }
+  email:string;
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.cliente = {};
     this.resposta = {};
+
+    this.route.params.subscribe((params: any) => {
+      this.cliente.email =  params["email"];
+    });
+
   }
 
   cadastro() {
