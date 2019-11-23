@@ -12,6 +12,7 @@ export class CadastroComponent implements OnInit {
   cliente: any;
   resposta: any;
   email:string;
+  
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute

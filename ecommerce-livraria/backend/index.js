@@ -134,6 +134,62 @@ router.get('/valida/:email?', (req, res) => {
 
 })
 
+//Caio inicio
+// Retorna dados do cliente a partir de email existente
+
+
+router.get('/confirma/endereco/:email?', (req, res) => {
+
+  const email = req.params.email
+  console.log(email);
+  if (req.params.email) {
+    sql = `SELECT * FROM bookcustomers WHERE email = '${email}';`;
+  }
+  execSQLQuery(sql, res);
+
+})
+
+router.put('/confirma/endereco/atualiza', (req, res) => {
+  
+  const custID = req.body[0].custID
+  const nomeP = req.body[0].fname;
+  const nomeS = req.body[0].lname;
+  const email = req.body[0].email;
+  const city = req.body[0].city;
+  const cep = req.body[0].cep;
+  const state = req.body[0].state;
+  const end = req.body[0].street;
+  const number = req.body[0].numero;
+  const referencia = req.body[0].referencia;
+
+
+  
+    sql = `
+    UPDATE bookcustomers
+  SET fname = '${nomeP}', 
+  lname = '${nomeS}',
+  email ='${email}' ,
+  city = '${city}',
+  cep = '${cep}',
+  state = '${state}',
+  street = '${end}',
+  numero = '${number}',
+  referencia = '${referencia}'
+  WHERE custID = '${custID}'`;
+  
+
+  console.log(sql);
+  execSQLQuery(sql, res);
+
+})
+
+
+
+
+//caio fim
+
+
+
 
 // Retorna o pedido pelo ID no cliente
 router.get('/ordemdetalhes/:id?', (req, res) => {
@@ -155,9 +211,9 @@ router.get('/ordemdetalhes/:id?', (req, res) => {
 
 // Gravando ordem
 router.post('/order', (req, res) => {
-  
+
   const custID = req.body[0].custID;
-  
+
   sql = `insert into bookorders value (0,${custID},0); `;
   execSQLQuery(sql, res);
 });
@@ -173,7 +229,7 @@ router.post('/add/item', (req, res) => {
   const orderID = req.body.orderID;
   const ISBN = req.body.ISBN;
   const qtd = req.body.qtd;
-  const price = req.body.price; 
+  const price = req.body.price;
   sql = `insert into bookorderitems value (${orderID},'${ISBN}',${qtd},${price});  `;
   console.log(sql);
   execSQLQuery(sql, res);
@@ -182,10 +238,10 @@ router.post('/add/item', (req, res) => {
 //Retorna curtId de um cliente pelo email
 router.get('/:email?', (req, res) => {
   const email = req.params.email;
-  
-  sql=`SELECT c.custID FROM bookcustomers as c where email = "${email}";`
+
+  sql = `SELECT c.custID FROM bookcustomers as c where email = "${email}";`
   execSQLQuery(sql, res);
-  
+
 });
 
 //*******************FIM****************************** */
@@ -205,7 +261,7 @@ function execSQLQuery(sqlQry, res) {
     //password: 'denis123',
     //database: 'ecommerce',
 
-    host: 'localhost',user: 'root',password: '',
+    host: 'localhost', user: 'root', password: '',
 
     database: 'sandvigbookstore',
     //database: 'livraria',
@@ -213,19 +269,19 @@ function execSQLQuery(sqlQry, res) {
     port: 3306
 
   });
-  
 
-  connection.connect(function(err) {
-    if (err){
-      console.log("Banco não conectado, alterar string de conexão !"); 
-    }else console.log('API funcionando!');
+
+  connection.connect(function (err) {
+    if (err) {
+      console.log("Banco não conectado, alterar string de conexão !");
+    } else console.log('API funcionando!');
   });
 
   connection.query(sqlQry, function (error, results, fields) {
     if (error)
       res.json(error);
-    else{
-      res.json(results);     
+    else {
+      res.json(results);
     }
 
     console.log()

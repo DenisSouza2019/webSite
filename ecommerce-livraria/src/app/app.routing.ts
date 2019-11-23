@@ -14,23 +14,25 @@ import { SitefeaturesComponent } from './sitefeatures/sitefeatures.component';
 import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.component';
 import { HistoricoComponent } from './historico/historico.component';
 import { Erro404Component } from './erro404/erro404.component';
+import { ConfirmaEnderecoComponent } from './confirma-endereco/confirma-endereco.component';
 
 const APP_ROUTES: Routes = [
+  { path: 'confirmaEndereco/:email', component: ConfirmaEnderecoComponent },
   { path: 'historico', component: HistoricoComponent },
   { path: 'ordemconfirmacao', component: OrdemconfirmacaoComponent },
-  { path: '', redirectTo:  '/livros', pathMatch: 'full' },
+  { path: '', redirectTo: '/livros', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'cadastro/:email', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'carrinho', component: CarrinhoComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'rodape', component: RodapeComponent},
-  { path: 'topo', component: TopoComponent},
-  { path: 'livros', component: LivrosComponent},
-  { path: 'livro-detalhes/:id', component: LivroDetalhesComponent},
-  { path: 'pesquisa/:textoPesq', component: PesquisaComponent},
-  { path: 'categoria/:id', component: CategoriaComponent},
-  { path: 'sitefeatures', component: SitefeaturesComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'rodape', component: RodapeComponent },
+  { path: 'topo', component: TopoComponent },
+  { path: 'livros', component: LivrosComponent },
+  { path: 'livro-detalhes/:id', component: LivroDetalhesComponent },
+  { path: 'pesquisa/:textoPesq', component: PesquisaComponent },
+  { path: 'categoria/:id', component: CategoriaComponent },
+  { path: 'sitefeatures', component: SitefeaturesComponent },
   { path: '**', component: Erro404Component } // Sempre no final do arquivo!!!
 ];
 
