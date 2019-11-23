@@ -3,7 +3,7 @@
     <a [routerLink]="['/livro-detalhes', item.ISBN]"> {{ item.title }}</a>
     <br />
     <span class="authors"
-      >by <a href="#">{{ item.nameF }} {{ item.nameL }}</a></span
+      >by <a [routerLink] = "['/livrosAutor/', item.AuthorID]">{{ item.nameF }} {{ item.nameL }}</a></span
     ><br />
   </div>
   <a [routerLink]="['/livro-detalhes', item.ISBN]">

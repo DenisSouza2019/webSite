@@ -182,14 +182,6 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
 
 })
 
-
-
-
-//caio fim
-
-
-
-
 // Retorna o pedido pelo ID no cliente
 
 //router.post('/ordemdetalhes', (req, res) => {
@@ -199,7 +191,7 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
  // const cod2 =parseInt( req.body.orderID);
 
  // console.log('---------->',cod1,cod2);
-  
+
  // sql = `SELECT a.orderID, c.street, l.title, i.qty, l.price, i.price
   //FROM bookcustomers as c
  //  inner join bookorders as a on a.custID = c.custID
@@ -221,7 +213,7 @@ const codOrder = req.params.codOrder;
  // const cod2 =parseInt( req.body.orderID);
 
  // console.log('---------->',cod1,cod2);
-  
+
   sql = `SELECT a.orderID, c.street, l.title, i.qty, l.price, i.price
   FROM bookcustomers as c
    inner join bookorders as a on a.custID = c.custID
@@ -234,6 +226,24 @@ const codOrder = req.params.codOrder;
  execSQLQuery(sql, res);
 });
 
+// Retorna dados para tela de historico
+
+router.get('/historico/:id?', (req, res) => {
+  const id = req.params.id
+
+
+    sql = `SELECT  a.orderID, l.ISBN, l.title, i.qty, a.orderdate, ba.nameF, ba.nameL, ba.AuthorID
+    FROM bookcustomers as c
+    inner join bookorders as a on a.custID = c.custID
+    inner join bookorderitems as i on i.orderID = a.orderID
+    inner join bookdescriptions as l on l.ISBN = i.ISBN
+    inner join bookauthorsbooks as b on b.ISBN = l.ISBN
+    inner join bookauthors as ba on ba.AuthorID = b.AuthorID
+    where c.custID = ${id} `;
+
+  execSQLQuery(sql, res);
+
+})
 
 
 // Gravando ordem

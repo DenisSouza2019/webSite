@@ -1,6 +1,6 @@
 
 <div class="bookTitle "> {{umLivro.title}}</div>
-<div class="authors">by <a href='#'>{{umLivro.nameF }} {{ umLivro.nameL}}</a></div>
+<div class="authors">by <a [routerLink] = "['/livrosAutor/', umLivro.AuthorID]">{{umLivro.nameF }} {{ umLivro.nameL}}</a></div>
 <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.LZZZZZZZ.jpg">
   <img *ngIf="umLivro" class="Book" alt="umLivro.title" title="de"
     src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{umLivro.ISBN}}.01.MZZZZZZZ.jpg"></a>

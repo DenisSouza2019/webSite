@@ -19,6 +19,10 @@ export class WebservicesService {
     return this.httpClient.get(`${this.baseUrl}livro/${isbn}`);
   }
 
+  getLivroPorAutor(autorID) {
+    return this.httpClient.get(`${this.baseUrl}autor/${autorID}`);
+  }
+
   getCategorias() {
     return this.httpClient.get(`${this.baseUrl}categorias`);
   }
@@ -37,21 +41,20 @@ export class WebservicesService {
   }
 
   getDadosPedido(dados) {
-    console.log('debug 1',dados);
-    return this.httpClient.post(`${this.baseUrl}ordemdetalhes`,dados);
+    console.log('debug 1', dados);
+    return this.httpClient.post(`${this.baseUrl}ordemdetalhes`, dados);
   }
 
 
-  updateEndereco(id, dados){
+  updateEndereco(id, dados) {
     this.httpClient.put(`${this.baseUrl}confirma/endereco/atualiza/${id}`, dados).toPromise();
     return 'Update realizado com sucesso'
   }
 
-  addLivro(umLivro) {
-    this.httpClient.post(`${this.baseUrl}add/livro`, umLivro).toPromise();
-    return 'Livro adicionado com sucesso';
+  getHistorico(id) {
+    return this.httpClient.get(`${this.baseUrl}historico/${id}`);
   }
-  // -----------------------------------
+
   addOrdem(custID) {
 
     this.httpClient.post(`${this.baseUrl}order`, custID).toPromise();

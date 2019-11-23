@@ -24,6 +24,7 @@ import { OrdemconfirmacaoComponent } from './ordemconfirmacao/ordemconfirmacao.c
 import { HistoricoComponent } from './historico/historico.component';
 import { Erro404Component } from './erro404/erro404.component';
 import { ConfirmaEnderecoComponent } from './confirma-endereco/confirma-endereco.component';
+import { LivrosAutorComponent } from './livros-autor/livros-autor.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ConfirmaEnderecoComponent } from './confirma-endereco/confirma-endereco
     HistoricoComponent,
     Erro404Component,
     ConfirmaEnderecoComponent,
+    LivrosAutorComponent,
   ],
   imports: [
     BrowserModule,

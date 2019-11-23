@@ -1,3 +1,4 @@
+import { LivrosAutorComponent } from './livros-autor/livros-autor.component';
 import { LivroDetalhesComponent } from './livros/livro-detalhes/livro-detalhes.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
@@ -19,7 +20,7 @@ import { ConfirmaEnderecoComponent } from './confirma-endereco/confirma-endereco
 const APP_ROUTES: Routes = [
 
   { path: 'confirmaEndereco/:email', component: ConfirmaEnderecoComponent },
-  { path: 'historico', component: HistoricoComponent },
+  { path: 'historico/:id', component: HistoricoComponent },
   { path: 'ordemconfirmacao/:idCliente', component: OrdemconfirmacaoComponent },
   { path: '', redirectTo: '/livros', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
@@ -34,6 +35,7 @@ const APP_ROUTES: Routes = [
   { path: 'pesquisa/:textoPesq', component: PesquisaComponent },
   { path: 'categoria/:id', component: CategoriaComponent },
   { path: 'sitefeatures', component: SitefeaturesComponent },
+  { path: 'livrosAutor/:autorID', component: LivrosAutorComponent},
   { path: '**', component: Erro404Component } // Sempre no final do arquivo!!!
 ];
 

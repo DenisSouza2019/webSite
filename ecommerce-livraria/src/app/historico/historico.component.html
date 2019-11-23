@@ -1,37 +1,33 @@
-<div class="col-sm-7">
-  <p>Colocar uma lista de historico de compras</p>
-  <div class="news" *ngFor="let item of colecaoLivros">
-    <div class="title">
-      <a href="#" class="booktitle" (click)="oferta(item)"> {{ item.title }}</a>
-      <br />
-      <span class="authors"
-        >by
-        <a href="#" (click)="autor(item)"
-          >{{ item.nameF }} {{ item.nameL }}</a
-        ></span
-      ><br />
-    </div>
-    <a href="#" class="booktitle" (click)="oferta(item)">
-      <img
-        class="img-responsive"
-        src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{
-          item.ISBN
-        }}.01.THUMBZZZ.jpg"
-        alt=""
-      />
-    </a>
+<div class="container">
 
-    <div innerHTML="{{ item.description.substring(0, 200) }}..."></div>
-    <p class="more">
-      <a href="#" (click)="oferta(item)">read more</a
-      ><i class="fa fa-angle-right" aria-hidden="true"></i>
-    </p>
-    <hr />
+  <h3 class="card-title text-center mb-2 mt-1 text-danger">Seu histórico de pedidos</h3>
+  <h4 class="card-title text-center mb-2 mt-1 text-dark">Você já comprou {{ qtdTtlLvrsCliente }} livros</h4>
+  <div *ngFor="let item of pedidosCliente">
+
+    <div class="container">
+      <div class="shadow p-2 mb-3 bg-white rounded">
+        <div class="row">
+          <div class="col-lg-1">
+            <a [routerLink]="['/livro-detalhes', item.ISBN]">
+              <img class="img-responsive"
+                src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg" alt="" />
+            </a>
+          </div>&nbsp;&nbsp;
+          <div class="col-lg-6">
+            <b>Order ID: {{item.orderID}}</b>&nbsp;&nbsp; {{item.orderdate | date}}
+            <br />
+
+            <a [routerLink]="['/livro-detalhes', item.ISBN]" class="booktitle"> {{item.title}}</a>
+            <br>
+
+            <a [routerLink] = "['/livrosAutor/', item.AuthorID]"> by {{item.nameF }} {{ item.nameL}}</a>
+            <br>
+
+            Qty:&nbsp;{{ item.qty }}
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <pre>
-      Deve ter uma
-      lista de historico de 
-      compra de um cliente com 
-      a quantidade de livros comprados
-      no cabeçalho</pre>
 </div>
