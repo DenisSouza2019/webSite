@@ -213,7 +213,7 @@ router.post('/order', (req, res) => {
 
   const custID = req.body[0].custID;
 
-  sql = `insert into bookorders value (0,${custID},0); `;
+  sql = `insert into bookorders values (0,${custID}, null); `;
   execSQLQuery(sql, res);
 });
 // Retornando ultima ordem
