@@ -134,9 +134,6 @@ router.get('/valida/:email?', (req, res) => {
 
 })
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 //Caio inicio
 // Retorna dados do cliente a partir de email existente
 
@@ -153,7 +150,7 @@ router.get('/confirma/endereco/:email?', (req, res) => {
 })
 
 router.put('/confirma/endereco/atualiza', (req, res) => {
-  
+
   const custID = req.body[0].custID
   const nomeP = req.body[0].fname;
   const nomeS = req.body[0].lname;
@@ -166,10 +163,10 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
   const referencia = req.body[0].referencia;
 
 
-  
+
     sql = `
     UPDATE bookcustomers
-  SET fname = '${nomeP}', 
+  SET fname = '${nomeP}',
   lname = '${nomeS}',
   email ='${email}' ,
   city = '${city}',
@@ -179,7 +176,7 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
   numero = '${number}',
   referencia = '${referencia}'
   WHERE custID = '${custID}'`;
-  
+
 
   console.log(sql);
   execSQLQuery(sql, res);
@@ -193,7 +190,7 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
 
 
 
->>>>>>> master
+
 
 // Retorna o pedido pelo ID no cliente
 router.get('/ordemdetalhes/:id?', (req, res) => {
@@ -255,10 +252,9 @@ app.listen(port);
 
 
 
-=======
 //inicia o servidor
 app.listen(port);
->>>>>>> Stashed changes
+
 
 function execSQLQuery(sqlQry, res) {
 
@@ -269,23 +265,13 @@ function execSQLQuery(sqlQry, res) {
     //password: 'denis123',
     //database: 'ecommerce',
 
-<<<<<<< HEAD
-    host: 'localhost',
-    user: 'root',
-    password: '',
-=======
     host: 'localhost', user: 'root', password: '',
 
->>>>>>> master
     database: 'sandvigbookstore',
     //database: 'livraria',
     port: 3306
   });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   connection.connect(function (err) {
     if (err) {
       console.log("Banco não conectado, alterar string de conexão !");
