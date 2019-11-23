@@ -36,6 +36,12 @@ export class WebservicesService {
     return this.httpClient.get(`${this.baseUrl}confirma/endereco/${email}`);
   }
 
+  getDadosPedido(dados) {
+    console.log('debug 1',dados);
+    return this.httpClient.post(`${this.baseUrl}ordemdetalhes`,dados);
+  }
+
+
   updateEndereco(id, dados){
     this.httpClient.put(`${this.baseUrl}confirma/endereco/atualiza/${id}`, dados).toPromise();
     return 'Update realizado com sucesso'

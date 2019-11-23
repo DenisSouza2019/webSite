@@ -48,7 +48,7 @@ export class ConfirmaEnderecoComponent implements OnInit {
     }
 
     if (this.flag == 1) {
-      this.router.navigate(["/ordemconfirmacao"]);
+      this.router.navigate([`/ordemconfirmacao/${this.cliente[0].custID}`]);
     }
 
   }

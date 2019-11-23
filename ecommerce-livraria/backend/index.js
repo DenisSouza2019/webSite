@@ -191,20 +191,48 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
 
 
 // Retorna o pedido pelo ID no cliente
-router.get('/ordemdetalhes/:id?', (req, res) => {
-  const id = req.params.id
 
-  if (req.params.id) {
-    sql = `SELECT  a.orderID, c.street, l.title, i.qty, l.price, i.price
-    FROM bookcustomers as c
-    inner join bookorders as a on a.custID = c.custID
+//router.post('/ordemdetalhes', (req, res) => {
+//console.log('teste2: ',req.body);
+
+ // const cod1 = parseInt(req.body.codcliente);
+ // const cod2 =parseInt( req.body.orderID);
+
+ // console.log('---------->',cod1,cod2);
+  
+ // sql = `SELECT a.orderID, c.street, l.title, i.qty, l.price, i.price
+  //FROM bookcustomers as c
+ //  inner join bookorders as a on a.custID = c.custID
+  //  inner join bookorderitems as i on i.orderID = a.orderID
+  //   inner join bookdescriptions as l on l.ISBN = i.ISBN
+   //   where c.custID = ${cod1} AND a.orderID = ${cod2} `;
+
+
+ //execSQLQuery(sql, res);
+//});
+
+router.get('/ordemdetalhes/?codCliente=?&codOrder=?', (req, res) => {
+//console.log('teste2: ',req.body);
+
+const codCliente = req.params.codCliente;
+const codOrder = req.params.codOrder;
+
+ // const cod1 = parseInt(req.body.codcliente);
+ // const cod2 =parseInt( req.body.orderID);
+
+ // console.log('---------->',cod1,cod2);
+  
+  sql = `SELECT a.orderID, c.street, l.title, i.qty, l.price, i.price
+  FROM bookcustomers as c
+   inner join bookorders as a on a.custID = c.custID
     inner join bookorderitems as i on i.orderID = a.orderID
-    inner join bookdescriptions as l on l.ISBN = i.ISBN
-    where c.custID =${id} `;
-  }
-  execSQLQuery(sql, res);
+     inner join bookdescriptions as l on l.ISBN = i.ISBN
+      where c.custID = ${codCliente} AND a.orderID = ${codOrder} `;
 
-})
+      console.log(sql);
+
+ execSQLQuery(sql, res);
+});
 
 
 

@@ -17,9 +17,10 @@ import { Erro404Component } from './erro404/erro404.component';
 import { ConfirmaEnderecoComponent } from './confirma-endereco/confirma-endereco.component';
 
 const APP_ROUTES: Routes = [
+
   { path: 'confirmaEndereco/:email', component: ConfirmaEnderecoComponent },
   { path: 'historico', component: HistoricoComponent },
-  { path: 'ordemconfirmacao', component: OrdemconfirmacaoComponent },
+  { path: 'ordemconfirmacao/:idCliente', component: OrdemconfirmacaoComponent },
   { path: '', redirectTo: '/livros', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'cadastro/:email', component: CadastroComponent },
