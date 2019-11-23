@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         this.numero = valida[0].custID;
         valida[0].custID;
         if (this.numero > 0) {
-          this.router.navigate(["/confirmaEndereco", this.login.email]);
+          
           this.CadastroItem(this.login.email);
 
         }
@@ -115,7 +115,8 @@ export class LoginComponent implements OnInit {
     });
     console.log(this.flagConfirmado);
     if (this.flagConfirmado == 1) {
-      this.router.navigate(["/ordemconfirmacao"]);
+      
+      this.router.navigate(["/confirmaEndereco", this.login.email]);
     }
 
 
