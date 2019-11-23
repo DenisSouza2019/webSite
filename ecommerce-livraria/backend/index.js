@@ -178,7 +178,7 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
   WHERE custID = '${custID}'`;
   
 
-  console.log(sql);
+  
   execSQLQuery(sql, res);
 
 })
