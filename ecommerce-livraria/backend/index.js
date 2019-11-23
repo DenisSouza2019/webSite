@@ -125,7 +125,7 @@ router.post('/add/cliente', (req, res) => {
 // Validação de login se o email existe no banco
 router.get('/valida/:email?', (req, res) => {
 
-  const email = req.params.email
+  const email = req.params.email;
 
   if (req.params.email) {
     sql = `SELECT * FROM bookcustomers AS c where c.email = '${email}';`;
@@ -134,6 +134,7 @@ router.get('/valida/:email?', (req, res) => {
 
 })
 
+<<<<<<< Updated upstream
 
 // Retorna o pedido pelo ID no cliente
 router.get('/ordemdetalhes/:id?', (req, res) => {
@@ -195,6 +196,10 @@ app.listen(port);
 
 
 
+=======
+//inicia o servidor
+app.listen(port);
+>>>>>>> Stashed changes
 
 function execSQLQuery(sqlQry, res) {
 
@@ -205,20 +210,19 @@ function execSQLQuery(sqlQry, res) {
     //password: 'denis123',
     //database: 'ecommerce',
 
-    host: 'localhost',user: 'root',password: '',
-
+    host: 'localhost',
+    user: 'root',
+    password: '',
     database: 'sandvigbookstore',
     //database: 'livraria',
-
     port: 3306
-
   });
   
 
-  connection.connect(function(err) {
-    if (err){
-      console.log("Banco não conectado, alterar string de conexão !"); 
-    }else console.log('API funcionando!');
+  connection.connect(function (err) {
+    if (err) {
+      console.log("Banco não conectado, alterar string de conexão !");
+    } else console.log('API funcionando!');
   });
 
   connection.query(sqlQry, function (error, results, fields) {
@@ -233,6 +237,5 @@ function execSQLQuery(sqlQry, res) {
     connection.end();
     console.log('executou!');
   });
-
 }
 

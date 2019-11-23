@@ -1,8 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+<<<<<<< Updated upstream
 import { StorageService } from "../storage.service";
 import { WebservicesService } from "../webservices.service";
+=======
+import { StorageService } from '../storage.service';
+import { AuthService } from '../auth.service';
+>>>>>>> Stashed changes
 
 @Component({
   selector: "app-login",
@@ -19,12 +24,16 @@ export class LoginComponent implements OnInit {
   qtdItensCart: number;
   carrinho: any = [];
 
+<<<<<<< Updated upstream
   constructor(
     private http: HttpClient,
     private router: Router,
     private storage: StorageService,
     private ws: WebservicesService
   ) {}
+=======
+  constructor(private authservice: AuthService, private http: HttpClient, private router: Router, private storage: StorageService) { }
+>>>>>>> Stashed changes
 
   ngOnInit() {
     this.flag = true;
@@ -41,9 +50,7 @@ export class LoginComponent implements OnInit {
 
   entrar() {
     this.numero = 0;
-    const req = this.http
-      .get(`http://127.0.0.1:3000/valida/${this.login.email}`)
-      .toPromise();
+    const req = this.http.get(`http://127.0.0.1:3000/valida/${this.login.email}`).toPromise();
     req
       .then(valida => {
         this.dados = valida;
