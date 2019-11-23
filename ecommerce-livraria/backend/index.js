@@ -5,6 +5,7 @@ const port = 3000; //porta padrão
 const mysql = require('mysql');
 var cors = require('cors') //  < --------------- IMPORTANTE (rode: npm install --save cors)
 
+
 //configurando o body parser para pegar POSTS mais tarde
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -121,16 +122,6 @@ router.post('/add/cliente', (req, res) => {
   execSQLQuery(sql, res);
 });
 
-// Cadastro do livro no carrinho
-router.post(`/add/livro`, (req, res) => {
-  const orderID = req.body.orderID;
-  const custID = req.body.custID;
-  const orderdate = req.body.orderdate;
-
-  sql = `INSERT INTO bookorders (${orderID}, ${custID}, ${orderdate})`;
-
-  execSQLQuery(sql, res);
-})
 // Validação de login se o email existe no banco
 router.get('/valida/:email?', (req, res) => {
 
@@ -160,34 +151,50 @@ router.get('/ordemdetalhes/:id?', (req, res) => {
 
 })
 
-// Salvando pedido no banco
-router.post('/add/carinho', (req, res) => {
 
-  const custID = parseInt(req.body.custID.substring(0, 150));
-  const ISBN = req.body.ISBN.substring(0, 150);
-  const qtd = parseInt(req.body.qtd.substring(0, 150));
-  const price = parseFloat(req.body.price.substring(0, 50));
-  const orderdate = parseInt(req.body.orderdate.substring(0,50));
- 
+
+// Gravando ordem
+router.post('/order', (req, res) => {
   
-  sql = `insert into bookorders value (0,${custID},${orderdate}); `;
-
+  const custID = req.body[0].custID;
+  
+  sql = `insert into bookorders value (0,${custID},0); `;
+  execSQLQuery(sql, res);
+});
+// Retornando ultima ordem
+router.get('/retorno', (req, res) => {
+  sql = `SELECT b.orderID FROM bookorders as b  ORDER BY b.orderID DESC limit 1`;
+  execSQLQuery(sql, res);
+});
+// Salvando pedido no banco
+router.post('/add/item', (req, res) => {
+  //console.log(req.body);
+  //const orderID = parseInt(req.params.idOrdem);
+  const orderID = req.body.orderID;
+  const ISBN = req.body.ISBN;
+  const qtd = req.body.qtd;
+  const price = req.body.price; 
+  sql = `insert into bookorderitems value (${orderID},'${ISBN}',${qtd},${price});  `;
+  console.log(sql);
   execSQLQuery(sql, res);
 
-
+});
+//Retorna curtId de um cliente pelo email
+router.get('/:email?', (req, res) => {
+  const email = req.params.email;
   
+  sql=`SELECT c.custID FROM bookcustomers as c where email = "${email}";`
+  execSQLQuery(sql, res);
   
 });
-
-
-
 
 //*******************FIM****************************** */
 
 //inicia o servidor
 app.listen(port);
-//console.log('API funcionando!');
-  id:'';
+
+
+
 
 function execSQLQuery(sqlQry, res) {
 
@@ -200,12 +207,13 @@ function execSQLQuery(sqlQry, res) {
 
     host: 'localhost',user: 'root',password: '',
 
-    //database: 'sandvigbookstore',
-    database: 'livraria',
+    database: 'sandvigbookstore',
+    //database: 'livraria',
 
     port: 3306
 
   });
+  
 
   connection.connect(function(err) {
     if (err){
@@ -216,9 +224,11 @@ function execSQLQuery(sqlQry, res) {
   connection.query(sqlQry, function (error, results, fields) {
     if (error)
       res.json(error);
-    else
-      res.json(results);
-     
+    else{
+      res.json(results);     
+    }
+
+    console.log()
 
     connection.end();
     console.log('executou!');

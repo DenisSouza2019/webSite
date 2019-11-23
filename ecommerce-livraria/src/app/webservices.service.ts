@@ -35,6 +35,27 @@ export class WebservicesService {
     this.httpClient.post(`${this.baseUrl}add/livro`, umLivro).toPromise();
     return 'Livro adicionado com sucesso';
   }
+ // -----------------------------------
+  addOrdem(custID) {
+    
+    this.httpClient.post(`${this.baseUrl}order`, custID).toPromise();
+    return 'Ordem cadastradas';
+  }
 
+  getOrderID(){
+    return this.httpClient.get(`${this.baseUrl}retorno`);
+  }
+
+  getIdCliente(email){
+    return this.httpClient.get(`${this.baseUrl}${email}`);
+  }
+  
+  addItem(item){
+    console.log(item)
+    this.httpClient.post(`${this.baseUrl}add/item`, item).toPromise();
+    return 'Sucesso item adicionado';
+  }
+
+  
 
 }

@@ -54,4 +54,5 @@ export class CarrinhoComponent implements OnInit {
     this.getQtdFinalItens();
     this.getSubTotalPedido();
   }
+  
 }
