@@ -30,10 +30,14 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private storage: StorageService,
     private ws: WebservicesService
+<<<<<<< HEAD
   ) {}
 =======
   constructor(private authservice: AuthService, private http: HttpClient, private router: Router, private storage: StorageService) { }
 >>>>>>> Stashed changes
+=======
+  ) { }
+>>>>>>> master
 
   ngOnInit() {
     this.flag = true;
@@ -61,8 +65,9 @@ export class LoginComponent implements OnInit {
         this.numero = valida[0].custID;
         valida[0].custID;
         if (this.numero > 0) {
-          this.CadastroItem(this.login.email);
           
+          this.CadastroItem(this.login.email);
+
         }
       })
       .catch(erro => {
@@ -83,7 +88,7 @@ export class LoginComponent implements OnInit {
   body: any = [];
   CadastroItem(email: string) {
     //console.log(email);
-    
+
     this.ws.getIdCliente(email).subscribe((resposta: any) => {
       this.idCliente = resposta;
       //console.log(this.idCliente[0].custID);
@@ -120,10 +125,11 @@ export class LoginComponent implements OnInit {
       //
     });
     console.log(this.flagConfirmado);
-    if(this.flagConfirmado == 1){
-      this.router.navigate(["/ordemconfirmacao"]);
+    if (this.flagConfirmado == 1) {
+      
+      this.router.navigate(["/confirmaEndereco", this.login.email]);
     }
-    
+
 
   }
 }
