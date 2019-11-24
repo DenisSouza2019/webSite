@@ -9,26 +9,42 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./ordemconfirmacao.component.css']
 })
 export class OrdemconfirmacaoComponent implements OnInit {
-  itemDoPedido: any =[];
+  itemDoPedido: any;
   idCliente: any;
   idOrder: any;
+  end:any;
   cliente: any;
 
-  codcliente: number;
+  aux:any;
+
+  
   orderID: number;
   body: any = [];
-
+  teste:number;
   constructor(private ws: WebservicesService,
     private route: ActivatedRoute,
     private http: HttpClient) { }
 
   ngOnInit() { 
-    
-    this.idcliente();
-    this.idpedido();
-    this.retornodados();
-    
+   
+    this.itemDoPedido = [];
+    this.route.params.subscribe(params => {
+      this.idCliente = params.idCliente;
+      this.ws.getOrderID().subscribe((resposta: any) => {
+        this.aux = resposta;
+       console.log(this.aux[0].id);
+       console.log(this.idCliente)
 
+       this.retornodados(this.idCliente,this.aux[0].id-1);
+       
+      // this.retornodados(this.idCliente,this.aux[0].id);
+       
+
+      });
+      
+       
+    });
+    
   }
 
   idcliente(){
@@ -43,28 +59,18 @@ export class OrdemconfirmacaoComponent implements OnInit {
     this.ws.getOrderID().subscribe((resposta: any) => {
       this.idOrder = resposta;
 //      console.log(this.idOrder[0].orderID);
-
-      this.body = {
-        codcliente: parseInt(this.idCliente),
-        orderID: this.idOrder[0].orderID
-      };
-
-     // console.log(this.body);
     });
   }
 
-  retornodados(){
+  retornodados(idCliente:number,idOrder:number){
 
-    this.ws.getDadosPedido(this.body).subscribe((resposta:any)=>{
+    this.ws.getDadosPedido(idCliente,idOrder).subscribe((resposta:any)=>{
       this.itemDoPedido = resposta;
       console.log(this.itemDoPedido);
-
+      this.idOrder = this.itemDoPedido[0].orderID;
+      this.end = this.itemDoPedido[0].street;
     });
-   // const req= this.http.post(`http://127.0.0.1:3000/ordemdetalhes`,this.body).toPromise();
-   // req.then(resposta => {
-    // this.itemDoPedido = resposta;
-     
-  // })
+  
     
   }
   

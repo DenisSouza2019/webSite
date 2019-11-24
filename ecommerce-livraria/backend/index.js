@@ -182,46 +182,27 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
 
 })
 
-// Retorna o pedido pelo ID no cliente
-
-//router.post('/ordemdetalhes', (req, res) => {
-//console.log('teste2: ',req.body);
-
- // const cod1 = parseInt(req.body.codcliente);
- // const cod2 =parseInt( req.body.orderID);
-
- // console.log('---------->',cod1,cod2);
-
- // sql = `SELECT a.orderID, c.street, l.title, i.qty, l.price, i.price
-  //FROM bookcustomers as c
- //  inner join bookorders as a on a.custID = c.custID
-  //  inner join bookorderitems as i on i.orderID = a.orderID
-  //   inner join bookdescriptions as l on l.ISBN = i.ISBN
-   //   where c.custID = ${cod1} AND a.orderID = ${cod2} `;
 
 
- //execSQLQuery(sql, res);
-//});
+router.get('/ordemdetalhes/:idCliente?:idOrdem?', (req, res) => {
 
-router.get('/ordemdetalhes/?codCliente=?&codOrder=?', (req, res) => {
-//console.log('teste2: ',req.body);
-
-const codCliente = req.params.codCliente;
-const codOrder = req.params.codOrder;
+console.log(req.params)
+const codCliente = req.params.idCliente;
+const codOrder = req.params.idOrdem;
 
  // const cod1 = parseInt(req.body.codcliente);
  // const cod2 =parseInt( req.body.orderID);
 
  // console.log('---------->',cod1,cod2);
 
-  sql = `SELECT a.orderID, c.street, l.title, i.qty, l.price, i.price
+  sql = `SELECT a.orderID, c.street, l.title,l.ISBN, i.qty, l.price, i.price
   FROM bookcustomers as c
    inner join bookorders as a on a.custID = c.custID
     inner join bookorderitems as i on i.orderID = a.orderID
      inner join bookdescriptions as l on l.ISBN = i.ISBN
-      where c.custID = ${codCliente} AND a.orderID = ${codOrder} `;
+      where c.custID =${codCliente}  and i.orderID = ${codOrder} `;
 
-      console.log(sql);
+      //console.log(sql);
 
  execSQLQuery(sql, res);
 });
@@ -256,7 +237,7 @@ router.post('/order', (req, res) => {
 });
 // Retornando ultima ordem
 router.get('/retorno', (req, res) => {
-  sql = `SELECT b.orderID FROM bookorders as b  ORDER BY b.orderID DESC limit 1`;
+  sql = `SELECT LAST_INSERT_ID(b.orderID) as id from livraria.bookorders as b order by b.orderID DESC limit 1`;
   execSQLQuery(sql, res);
 });
 // Salvando pedido no banco
@@ -300,8 +281,8 @@ function execSQLQuery(sqlQry, res) {
 
     host: 'localhost', user: 'root', password: '',
 
-    database: 'sandvigbookstore',
-    //database: 'livraria',
+    //database: 'sandvigbookstore',
+    database: 'livraria',
 
     port: 3306
 

@@ -1,56 +1,44 @@
-<div class="row">
-  <div class="col-sm-7">
-    <div class="d-flex justify-content-center shadow p-3 mb-5 bg-white rounded ">
-      <article class="card-body col-10">
-        <h4 class="card-title text-center mb-4 mt-1">Ordem de Confirmação</h4>
+<div class="col-sm-11">
+  <h4 class="card-title text-center mb-4 mt-1">Ordem de Confirmação</h4>
+  <hr />
+  <p>Número do pedido: {{ idOrder }}</p>
+  <p>Endereço de entrega: {{ end }}</p>
+  <hr />
+  <h5 class="card-title text-center mb-4 mt-1">Livros enviados</h5>
+  <table  class="table table-striped">
+    <tbody>
+      <tr>
+        <th>Título</th>
 
-        <hr />
-        <p>Número do pedido: {{idOrder[0].orderID}} </p>
-        <p>Endereço de entrega:{{itemDoPedido}} </p>
-        <h5 class="card-title text-center mb-4 mt-1">Livros enviados</h5>
+        <th>Qtde</th>
 
-        <table class="table table-bordered" id="cart">
+        <th>Preço</th>
 
+        <th>Total</th>
+      </tr>
 
-          <tbody>
-
-            <tr>
-
-              <th>Título</th>
-
-              <th>Qtde</th>
-
-              <th>Preço</th>
-
-              <th>Total</th>
-
-
-            </tr>
-
-
-            <tr *ngFor='let item of itemDoPedido'>
-
-              <td><a [routerLink]="['/livro-detalhes', c.objLivro.ISBN]">{{ item.title }}</a></td>
-              <td>{{ item.qty }}</td>
-              <td>{{ item.price | currency:'BRL' }}</td>
-              <td>{{ item.qty*item.price | currency:'BRL' }}</td>
-
-
-
-
-            </tr>
-
-
-
-          </tbody>
-        </table>
-
-
-      </article>
-    </div>
-    <a routerLink="/livros">
-      <button type="button" class="btn btn-outline-success  btn-block">Continuar comprando</button><br>
-    </a>
-    <a [routerLink]="['/historico', idCliente]">
-      <button type="button" class="btn btn-outline-info  btn-block">Ver historico de Compra</button>
-    </a>
+      <tr *ngFor="let index of itemDoPedido">
+        <td> 
+          <a [routerLink]="['/livro-detalhes', index.ISBN]">
+            {{ index.title }}
+          </a>
+        </td>
+        <td>{{ index.qty }}</td>
+        <td>{{ index.price }}</td>
+        <td>{{ index.qty * index.price | currency: "BRL" }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <p>Obrigado por fazer realizar sua compra na <a routerLink="/sitefeatures">DCI livros</a>  ! </p>
+  <a routerLink="/livros">
+    <button type="button" class="btn btn-outline-success  btn-block">
+      Continuar comprando</button
+    ><br />
+  </a>
+  <a [routerLink]="['/historico', idCliente]">
+    <button type="button" class="btn btn-outline-info  btn-block">
+      Ver historico de Compra
+    </button>
+  </a>
+</div>

@@ -40,9 +40,9 @@ export class WebservicesService {
     return this.httpClient.get(`${this.baseUrl}confirma/endereco/${email}`);
   }
 
-  getDadosPedido(dados) {
-    console.log('debug 1', dados);
-    return this.httpClient.post(`${this.baseUrl}ordemdetalhes`, dados);
+  getDadosPedido(idCliente,idOrdem) {
+    
+    return this.httpClient.get(`${this.baseUrl}ordemdetalhes/${idCliente}${idOrdem}`);
   }
 
 

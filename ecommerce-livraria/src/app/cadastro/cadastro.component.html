@@ -16,7 +16,6 @@
             name="nomeP"
             [(ngModel)]="cliente.nomeP"
             maxlength="150"
-            
           />
           <div class="valid-tooltip">
             Tudo certo!
@@ -47,7 +46,7 @@
               placeholder="Email"
               name="email"
               [(ngModel)]="cliente.email"
-              value= ""
+              value=""
               maxlength="150"
             />
             <div class="invalid-tooltip">
@@ -188,25 +187,33 @@
 
         <br />
       </div>
+
+      <div *ngIf="resposta.protocol41 === true">
+       
       
-      <div  *ngIf="resposta.protocol41 === true">
-            <a
-              routerLink="/livros"
-              style="margin-right: 15px;"
-              class="btn btn-secondary btn-lg active"
-              role="button"
-              aria-pressed="true"
-              >Continuar comprando</a
-            >
-            <a
-              routerLink="/ordemconfirmacao"
-              style="margin-right: 15px;"
-              class="btn btn-secondary btn-lg active"
-              role="button"
-              aria-pressed="true"
-              >Finalizar Pedido</a
-            >
-          </div>
-          </form>
-        </article>
+
+        <div>
+            <table>
+                <tr>
+                <td>
+                    <div>
+                        <button class="btn btn-warning" [routerLink]="['/livros']">
+                          Continuar comprando
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button class="btn btn-success" (click)="CadastroItem()">
+                            Finalizar Pedido
+                          </button>
+                    </div>
+                </td>       
+                </tr>
+            </table>
+        </div>
+
       </div>
+    </form>
+  </article>
+</div>
