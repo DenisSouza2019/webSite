@@ -8,32 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./historico.component.css']
 })
 export class HistoricoComponent implements OnInit {
-  /*
-    pedidosCliente: any = [
-      {
-        title: 'hoje',
-        oderID: 1,
-        data: '2019/11/23',
-        nameL: 'John',
-        qtd: 3,
-        imagem: 'figura',
-        ISBN: '0596101104'
-      },
-      {
-        title: 'hoje',
-        oderID: 1,
-        data: '2019/11/23',
-        nameL: 'John',
-        qtd: 3,
-        imagem: 'figura',
-        ISBN: '0596101104'
-      }
-    ];
-  */
+
   pedidosCliente: any = [];
-
-  qtdTtlLvrsCliente = 2;
-
+  qtdTtlLvrsCliente = 0;
   idCliente;
 
   constructor(private ws: WebservicesService, private route: ActivatedRoute) { }
@@ -43,10 +20,16 @@ export class HistoricoComponent implements OnInit {
       this.idCliente = params.id;
       this.ws.getHistorico(this.idCliente).subscribe((resposta: any) => {
         this.pedidosCliente = resposta;
-        console.log(this.idCliente);
+        this.qtdTtlLvrsCliente = this.getQtdLvrsCliente();
       });
     });
-
   }
 
+  getQtdLvrsCliente() {
+    let qtdLC = 0;
+    for (const p of this.pedidosCliente) {
+      qtdLC += p.qty;
+    }
+    return qtdLC;
+  }
 }

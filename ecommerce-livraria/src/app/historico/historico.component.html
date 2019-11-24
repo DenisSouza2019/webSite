@@ -1,7 +1,9 @@
 <div class="container">
 
   <h3 class="card-title text-center mb-2 mt-1 text-danger">Seu histórico de pedidos</h3>
-  <h4 class="card-title text-center mb-2 mt-1 text-dark">Você já comprou {{ qtdTtlLvrsCliente }} livros</h4>
+  <h4 *ngIf="qtdTtlLvrsCliente > 1" class="card-title text-center mb-2 mt-1 text-dark">Você já comprou {{ qtdTtlLvrsCliente }} livros</h4>
+  <h4 *ngIf="qtdTtlLvrsCliente == 1" class="card-title text-center mb-2 mt-1 text-dark">Você comprou {{ qtdTtlLvrsCliente }} livro</h4>
+
   <div *ngFor="let item of pedidosCliente">
 
     <div class="container">
@@ -13,14 +15,14 @@
                 src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{item.ISBN}}.01.THUMBZZZ.jpg" alt="" />
             </a>
           </div>&nbsp;&nbsp;
-          <div class="col-lg-6">
+          <div class="col-lg-9">
             <b>Order ID: {{item.orderID}}</b>&nbsp;&nbsp; {{item.orderdate | date}}
             <br />
 
             <a [routerLink]="['/livro-detalhes', item.ISBN]" class="booktitle"> {{item.title}}</a>
             <br>
 
-            <a [routerLink] = "['/livrosAutor/', item.AuthorID]"> by {{item.nameF }} {{ item.nameL}}</a>
+            by <a [routerLink] = "['/livrosAutor/', item.AuthorID]">  {{item.nameF }} {{ item.nameL}}</a>
             <br>
 
             Qty:&nbsp;{{ item.qty }}
