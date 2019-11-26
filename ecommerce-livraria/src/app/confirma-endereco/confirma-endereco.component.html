@@ -1,16 +1,18 @@
 <br />
 <div class="d-flex justify-content-center shadow p-3 mb-5 bg-white rounded ">
   <article class="card-body col-10">
-    <h4 class="card-title text-center mb-4 mt-1">Confirma Endereço de Entrega</h4>
+    <div *ngIf="classCliente == 1">Bem vindo de volta -- Por favor, confirme seu endereço de entrega!</div>
+    <div *ngIf="classCliente == 0" >Bem vindo ao nosso site -- Por favor, forneça um endereço para entrega!</div>
+
+    <h4 class="card-title text-center mb-4 mt-1">Confirmar Endereço de Entrega</h4>
     <hr />
 
     <form class="needs-validation" novalidate>
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="validationTooltip01">Primeiro nome</label>
-          <input type="text" class="form-control" id="validationTooltip01" placeholder="Nome" name="nomeP" 
-          [(ngModel)]="cliente[0].fname"
-            maxlength="150" />
+          <input type="text" class="form-control" id="validationTooltip01" placeholder="Nome" name="nomeP"
+            [(ngModel)]="cliente[0].fname" maxlength="150" />
           <div class="valid-tooltip">
             Tudo certo!
           </div>
@@ -18,8 +20,7 @@
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">Sobrenome</label>
           <input type="text" class="form-control" id="validationTooltip02" placeholder="Sobrenome" name="nomeS"
-          [(ngModel)]="cliente[0].lname"
-            maxlength="150" />
+            [(ngModel)]="cliente[0].lname" maxlength="150" />
           <div class="valid-tooltip">
             Tudo certo!
           </div>
@@ -28,8 +29,7 @@
           <label for="validationTooltipUsername">Email</label>
           <div class="input-group">
             <input type="email" class="form-control" id="validationTooltipUsername" placeholder="Email" name="email"
-            [(ngModel)]="cliente[0].email"
-              value="" maxlength="150" />
+              [(ngModel)]="cliente[0].email" value="" maxlength="150" />
             <div class="invalid-tooltip">
               CPF invalido
             </div>
@@ -41,8 +41,7 @@
         <div class="col-md-6 mb-3">
           <label for="validationTooltip03">Cidade</label>
           <input type="text" class="form-control" id="validationTooltip03" placeholder="Cidade" name="city"
-          [(ngModel)]="cliente[0].city"
-            maxlength="50" />
+            [(ngModel)]="cliente[0].city" maxlength="50" />
           <div class="invalid-tooltip">
             Por favor, informe uma cidade válida.
           </div>
@@ -50,16 +49,15 @@
         <div class="col-md-3 mb-3">
           <label for="validationTooltip04">Estado</label>
           <input type="text" class="form-control" id="validationTooltip04" placeholder="Estado" name="state"
-          [(ngModel)]="cliente[0].state"
-            maxlength="2" />
+            [(ngModel)]="cliente[0].state" maxlength="2" />
           <div class="invalid-tooltip">
             Por favor, informe um estado válido.
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <label for="validationTooltip05">CEP</label>
-          <input type="text" class="form-control" id="validationTooltip05" placeholder="CEP" name="cep" maxlength="9" 
-          [(ngModel)]="cliente[0].cep"/>
+          <input type="text" class="form-control" id="validationTooltip05" placeholder="CEP" name="cep" maxlength="9"
+            [(ngModel)]="cliente[0].cep" />
           <div class="invalid-tooltip">
             Por favor, informe um CEP válido.
           </div>
@@ -67,21 +65,18 @@
         <div class="col-md-9 mb-3">
           <label for="validationTooltip05">Endereço</label>
           <input type="text" class="form-control" id="validationTooltip05" placeholder="Endereço" name="end"
-          [(ngModel)]="cliente[0].street"
-            maxlength="150" />
+            [(ngModel)]="cliente[0].street" maxlength="150" />
         </div>
         <div class="col-md-3 mb-3">
           <label for="validationTooltip05">Nº</label>
           <input type="number" class="form-control" id="validationTooltip05" placeholder="Numero" name="number"
-          [(ngModel)]="cliente[0].numero"
-            maxlength="10" />
+            [(ngModel)]="cliente[0].numero" maxlength="10" />
         </div>
 
         <div class="col-md-11 mb-3">
           <label for="validationTooltip05">Ponto de Referencia</label>
           <input type="text" class="form-control" id="validationTooltip05" placeholder="Ponto de Referencia"
-          [(ngModel)]="cliente[0].referencia"
-            name="referencia" maxlength="150" />
+            [(ngModel)]="cliente[0].referencia" name="referencia" maxlength="150" />
           <div class="invalid-tooltip">
             Por favor, informe um CEP válido.
           </div>
@@ -89,7 +84,7 @@
       </div>
 
       <div>
-        <button class="btn btn-primary" (click) = "atualiza()">Enviar</button>
+        <button class="btn btn-primary" (click)="atualiza()">Confirmar compra</button>
       </div>
 
 

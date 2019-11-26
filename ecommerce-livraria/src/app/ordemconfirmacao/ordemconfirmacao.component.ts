@@ -12,15 +12,15 @@ export class OrdemconfirmacaoComponent implements OnInit {
   itemDoPedido: any;
   idCliente: any;
   idOrder: any;
-  end:any;
+  end: any;
   cliente: any;
 
-  aux:any;
+  aux: any;
 
 
   orderID: number;
   body: any = [];
-  teste:number;
+  teste: number;
   constructor(private ws: WebservicesService,
     private route: ActivatedRoute,
     private http: HttpClient) { }
@@ -32,13 +32,10 @@ export class OrdemconfirmacaoComponent implements OnInit {
       this.idCliente = params.idCliente;
       this.ws.getOrderID().subscribe((resposta: any) => {
         this.aux = resposta;
-       console.log(this.aux[0].id);
-       console.log(this.idCliente)
+        console.log(this.aux[0].id);
+        console.log(this.idCliente);
 
-       this.retornodados(this.idCliente,this.aux[0].id);
-
-      // this.retornodados(this.idCliente,this.aux[0].id);
-
+        this.retornodados(this.idCliente, this.aux[0].id);
 
       });
 
@@ -47,24 +44,24 @@ export class OrdemconfirmacaoComponent implements OnInit {
 
   }
 
-  idcliente(){
+  idcliente() {
     this.route.params.subscribe(params => {
       this.idCliente = params.idCliente;
-  //    console.log(this.idCliente)
+      //    console.log(this.idCliente)
     });
 
   }
 
-  idpedido(){
+  idpedido() {
     this.ws.getOrderID().subscribe((resposta: any) => {
       this.idOrder = resposta;
-//      console.log(this.idOrder[0].orderID);
+      //      console.log(this.idOrder[0].orderID);
     });
   }
 
-  retornodados(idCliente:number,idOrder:number){
+  retornodados(idCliente: number, idOrder: number) {
 
-    this.ws.getDadosPedido(idCliente,idOrder).subscribe((resposta:any)=>{
+    this.ws.getDadosPedido(idCliente, idOrder).subscribe((resposta: any) => {
       this.itemDoPedido = resposta;
       console.log(this.itemDoPedido);
       this.idOrder = this.itemDoPedido[0].orderID;

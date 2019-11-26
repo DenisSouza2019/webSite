@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { StorageService } from "../storage.service";
+import { StorageService } from '../storage.service';
 import { WebservicesService } from '../webservices.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,6 +15,7 @@ export class ConfirmaEnderecoComponent implements OnInit {
   email: string;
   result: any;
   carrinho: any = [];
+  classCliente = 0;
 
   constructor(private route: ActivatedRoute,
     private ws: WebservicesService,
@@ -27,11 +28,14 @@ export class ConfirmaEnderecoComponent implements OnInit {
     this.cliente = [];
 
     this.route.params.subscribe((params: any) => {
-      this.cliente.email = params["email"];
+      this.cliente.email = params['email'];
 
       // console.log('teste-------------------------------------', this.cliente.email);
       this.ws.getDadosConfirmacaoEndereco(this.cliente.email).subscribe((resposta: any) => {
         this.cliente = resposta;
+        if (this.cliente !== null) {
+          this.classCliente = 1;
+        }
       });
 
     });
@@ -44,11 +48,13 @@ export class ConfirmaEnderecoComponent implements OnInit {
     //console.log(this.carrinho);
   }
 
-  flag: number;
+  flag = 0;
+
+
   atualiza() {
 
-    //console.log(this.cliente[0].custID);
-    //console.log(this.cliente);
+    // console.log(this.cliente[0].custID);
+    // console.log(this.cliente);
 
     if (this.cliente !== null) {
       this.http.put(`http://127.0.0.1:3000/confirma/endereco/atualiza`, this.cliente).toPromise();
@@ -72,7 +78,7 @@ export class ConfirmaEnderecoComponent implements OnInit {
         // Criando Ordem
         if (res.success)
           this.router.navigate([`/ordemconfirmacao/${this.cliente[0].custID}`]);
-          this.storage.limpaCarrinho();
+        this.storage.limpaCarrinho();
       })
 
     }
