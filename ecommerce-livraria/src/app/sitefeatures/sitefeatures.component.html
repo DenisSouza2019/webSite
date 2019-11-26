@@ -2,17 +2,18 @@
 
   <!--DIV RESPONSAVEL PELO TEXTO DO SITEFEATURES-->
 
-  <div>
+  <div >
 
     <p class="pageTitle">Site Features</p>
     <ul>
       <li>Site desenvolvido por três alunos graduandos na disciplina de Desenvolvimento de Sistemas na WEB pela<a
           href="https://unifei.edu.br/"> Universidade Federal de Itajubá.</a> </li>
-      <li>As tecnologias utilizadas para o projeto foram Angular, Node e mySQL.</li>
-      <li>As iformações referentes aos produtos, clientes e pedidos foram armazenadas utilizando uma base de dados
-        mySQL.
+      <li>As tecnologias utilizadas para o projeto foram <a href="https://angular.io/">Angular</a>, 
+        <a href="https://nodejs.org/en/">Node</a> e <a href="https://www.mysql.com/">mySQL.</a></li>
+      <li>As iformações referentes aos produtos, clientes e pedidos foram armazenadas utilizando um banco de dados
+        <a href="https://www.mysql.com/">mySQL.</a>
       </li>
-      <li><span class="subHead">Base de dados mySQL</span>
+      <li><span class="subHead">Banco de dados <a href="https://www.mysql.com/">mySQL</a></span>
         <ul>
           <li>Normalizada para a Terceira forma normal. As tables incluem:
             <ul>
@@ -28,11 +29,11 @@
           </li>
         </ul>
       </li>
-      <li><span class="subHead">Home page</span>
+      <li><span class="subHead"><a routerLink="/livros">Home page</a></span>
         <ul>
-          <li>Seleciona de forma aleatória três itens da base de dados, utilizando comandos SQL.</li>
-          <li>Gera o menu de busca dinamicamente a partir da base de dados usando uma query SQL
-            que mostra somente as categorias que realmente contêm livros.
+          <li>Seleciona de forma aleatória três itens do banco de dados, utilizando comandos SQL.</li>
+          <li>Gera o menu de busca dinamicamente a partir do banco de dados usando uma query SQL.
+           Se não houver livros na categoria exibe uma mensagem.
           </li>
           <li>Limita e padroniza a descrição dos livros em até 250 caracteres.</li>
         </ul>
@@ -42,22 +43,22 @@
           <li>Limpa os dados preenchidos por usuários para sua proteção contra ataques por injeções SQL e
             cross-site scripting. </li>
           <li>As buscas são feitas pelo título do livro, descrição, autor e
-            campos de categorias na base de dados.</li>
+            campos de categorias no banco de dados.</li>
           <li>A função mysql_num_rows() é utilizada para contar o número de livros encontrados pela busca.
           </li>
-          <li>Responde educadamente por buscas que retornam nenhum resultado.</li>
+          <li>Responde por buscas que retornam nenhum resultado.</li>
         </ul>
       </li>
-      <li><span class="subHead">Página do carrinho</span>
+      <li><span class="subHead"><a routerLink="/carrinho" >Página do carrinho</a></span>
         <ul>
           <li>Usa cookie para armazenar o ISBN dos itens no carrinho.</li>
         </ul>
       </li>
       <li><span class="subHead">Página de Checkout</span>
         <ul>
-          <li>Procura pelos emails existentes na base de dados
+          <li>Procura pelos emails existentes no banco de dados
             as contas dos clientes e escreve nas informações de envio na forma da ordem de confirmação.</li>
-          <li>O ID do usuário é criptografado utilizando o algoritmo Rijndael
+          <li>O ID do usuário é criptografado utilizando o algoritmo Rijndael.
           </li>
         </ul>
       </li>
@@ -65,7 +66,7 @@
         <ul>
           <li>Checa por carrinhos de compra e avisa o usuário caso o carrinho esteja vazio.</li>
           <li>Todos os campos são verificados para assegurar que há informação neles.</li>
-          <li>Procura pelos emails existentes na base de dados e pede ao usuário para tentar novamente
+          <li>Procura pelos emails existentes no banco de dados e pede ao usuário para tentar novamente
             se o endereço não for encontrado.</li>
           <li>Modificações feitas sobre as informações do consumidor são atualizadas no banco.</li>
           <li>As informações do pedido são salvas no banco.</li>
@@ -77,6 +78,7 @@
           <li>Se nenhum resultado for encontrado haverá um aviso.</li>
         </ul>
       </li>
+      <li>Obrigado ao site do <a href="https://baldochi.unifei.edu.br/COM222/"> Baldochi</a> pelo o uso das imagens fornecidas e descrição dos livros.</li>
 
     </ul>
 
