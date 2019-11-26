@@ -35,6 +35,9 @@ export class StorageService {
     }
   }
 
+  limpaCarrinho(){
+    this.setItem('carrinho',[])
+  }
 
   getCarrinho() {
     const cart: any = this.getItem('carrinho');

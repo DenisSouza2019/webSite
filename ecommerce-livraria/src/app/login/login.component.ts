@@ -81,47 +81,9 @@ export class LoginComponent implements OnInit {
 
     this.ws.getIdCliente(email).subscribe((resposta: any) => {
       this.idCliente = resposta;
-      //console.log(this.idCliente[0].custID);
-      //
 
-      const msn = this.ws.addOrdem(this.idCliente); // Criando Ordem
-      //console.log(this.msn);
-
-      if (msn == "Ordem cadastradas") {
-        this.ws.getOrderID().subscribe((resposta: any) => {
-          this.idOdem = resposta;
-
-          console.log(this.idOdem[0].id);
-
-          if (this.idOdem[0].id > 0) {
-            for (let item of this.carrinho) {
-              this.qtd = item.qtdCart;
-              this.isbn = item.objLivro.ISBN;
-              this.price = item.objLivro.price;
-
-              this.body = {
-                orderID: this.idOdem[0].id,
-                ISBN: this.isbn,
-                qtd: this.qtd,
-                price: this.price
-              };
-              console.log(this.body);
-
-              this.http
-                .post("http://127.0.0.1:3000/add/item", this.body)
-                .toPromise();
-
-              //this.flagConfirmado = this.ws.addItem(this.body);
-            }
-            this.flagConfirmado = 1;
-            console.log(this.flagConfirmado);
-            if (this.flagConfirmado == 1) {
-              this.router.navigate(["/confirmaEndereco", this.login.email]);
-            }
-          }
-        });
-      }
-      //
+      if (this.idCliente.length > 0)
+        this.router.navigate(["/confirmaEndereco", this.login.email]);
     });
   }
 

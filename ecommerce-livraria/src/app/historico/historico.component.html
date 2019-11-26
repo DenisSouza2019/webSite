@@ -22,8 +22,10 @@
             <a [routerLink]="['/livro-detalhes', item.ISBN]" class="booktitle"> {{item.title}}</a>
             <br>
 
-            by <a [routerLink] = "['/livrosAutor/', item.AuthorID]">  {{item.nameF }} {{ item.nameL}}</a>
+            by <a *ngFor="let a of item.nameF; let i = index" [routerLink] = "['/livrosAutor/', item.AuthorID[i]]">  {{item.nameF[i] }} {{ item.nameL[i] }}</a>
             <br>
+
+
 
             Qty:&nbsp;{{ item.qty }}
 

@@ -41,8 +41,8 @@ export class WebservicesService {
   }
 
   getDadosPedido(idCliente,idOrdem) {
-    
-    return this.httpClient.get(`${this.baseUrl}ordemdetalhes/${idCliente}${idOrdem}`);
+
+    return this.httpClient.get(`${this.baseUrl}ordemdetalhes/${idCliente}/${idOrdem}`);
   }
 
 
@@ -57,8 +57,7 @@ export class WebservicesService {
 
   addOrdem(custID) {
 
-    this.httpClient.post(`${this.baseUrl}order`, custID).toPromise();
-    return 'Ordem cadastradas';
+    return this.httpClient.post(`${this.baseUrl}order`, custID).toPromise();
   }
 
   getOrderID() {

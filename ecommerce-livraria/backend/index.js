@@ -184,7 +184,7 @@ router.put('/confirma/endereco/atualiza', (req, res) => {
 
 
 
-router.get('/ordemdetalhes/:idCliente?:idOrdem?', (req, res) => {
+router.get('/ordemdetalhes/:idCliente/:idOrdem', (req, res) => {
 
   console.log(req.params)
   const codCliente = req.params.idCliente;
@@ -211,14 +211,15 @@ router.get('/ordemdetalhes/:idCliente?:idOrdem?', (req, res) => {
 
 router.get('/historico/:id?', (req, res) => {
   const id = req.params.id
-  sql = `SELECT  a.orderID, l.ISBN, l.title, i.qty, a.orderdate, ba.nameF, ba.nameL, ba.AuthorID
-    FROM bookcustomers as c
-    inner join bookorders as a on a.custID = c.custID
-    inner join bookorderitems as i on i.orderID = a.orderID
-    inner join bookdescriptions as l on l.ISBN = i.ISBN
-    inner join bookauthorsbooks as b on b.ISBN = l.ISBN
-    inner join bookauthors as ba on ba.AuthorID = b.AuthorID
-    where c.custID = ${id} `;
+  sql = `SELECT a.orderID, l.ISBN, l.title, i.qty, a.orderdate, group_concat(DISTINCT(ba.nameF)) as nameF , group_concat(DISTINCT(ba.nameL)) as nameL, group_concat(DISTINCT(ba.AuthorID)) as AuthorID
+  FROM bookcustomers as c
+  inner join bookorders as a on a.custID = c.custID
+  inner join bookorderitems as i on i.orderID = a.orderID
+  inner join bookdescriptions as l on l.ISBN = i.ISBN
+  inner join bookauthorsbooks as b on b.ISBN = l.ISBN
+  inner join bookauthors as ba on ba.AuthorID = b.AuthorID
+  where c.custID = ${id}
+  group by i.orderID, l.ISBN `;
 
   execSQLQuery(sql, res);
 
@@ -228,10 +229,9 @@ router.get('/historico/:id?', (req, res) => {
 // Gravando ordem
 router.post('/order', (req, res) => {
 
-  const custID = req.body[0].custID;
-
+  const custID = req.body.custID;
   sql = `insert into bookorders values (0,${custID}, null); `;
-  execSQLQuery(sql, res);
+  execSQLQuery(sql, res, req, "processaOrdem");
 });
 // Retornando ultima ordem
 router.get('/retorno', (req, res) => {
@@ -268,7 +268,7 @@ app.listen(port);
 
 
 
-function execSQLQuery(sqlQry, res) {
+function execSQLQuery(sqlQry, res, req, customFunction) {
 
   const connection = mysql.createConnection({
 
@@ -294,10 +294,15 @@ function execSQLQuery(sqlQry, res) {
   });
 
   connection.query(sqlQry, function (error, results, fields) {
-    if (error)
-      res.json(error);
-    else {
-      res.json(results);
+    if (customFunction != null && !error) {
+      console.log(error);
+      helpers[customFunction](req, res, error, results, fields);
+    } else {
+      if (error)
+        res.json(error);
+      else {
+        res.json(results);
+      }
     }
 
     console.log()
@@ -305,6 +310,54 @@ function execSQLQuery(sqlQry, res) {
     connection.end();
     console.log('executou!');
   });
+
+  var helpers = { };
+  helpers.processaOrdem = function (req, res, error, results, fields) {
+    const orderID = results.insertId;
+    const cartProducts = req.body.cartProducts.map(item => {
+      return [
+        orderID,
+        item.ISBN,
+        item.qty,
+        item.price
+      ];
+    });
+
+    console.log(cartProducts)
+
+    const sql = `insert into bookorderitems values ?;`;
+    const connection = mysql.createConnection({
+
+      //host: 'livraria.co7kg02oqfea.us-east-1.rds.amazonaws.com',
+      //user: 'admin',
+      //password: 'denis123',
+      //database: 'ecommerce',
+
+      host: 'localhost', user: 'root', password: '',
+
+      database: 'sandvigbookstore',
+      // database: 'livraria',
+
+      port: 3306
+
+    });
+
+
+    connection.connect(function (err) {
+      if (err) {
+        console.log("Banco não conectado, alterar string de conexão !");
+      } else console.log('API funcionando!');
+    });
+
+    connection.query(sql, [cartProducts], function (error, results, fields) {
+      if (error)
+        res.send(error)
+      else
+        res.send({success: true, msg: "Salvo com sucesso!"})
+    });
+
+
+  }
 
 }
 

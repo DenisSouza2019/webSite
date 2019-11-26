@@ -47,7 +47,7 @@ export class CadastroComponent implements OnInit {
   }
   cadastro() {
 
-    
+
     const req = this.http.post("http://127.0.0.1:3000/add/cliente", this.cliente).toPromise();
     req.then((resposta) => {
       this.resposta = resposta;
@@ -57,7 +57,7 @@ export class CadastroComponent implements OnInit {
 
     });
 
-   
+
 
   }
 
@@ -74,6 +74,8 @@ export class CadastroComponent implements OnInit {
       const msn = this.ws.addOrdem(this.idCliente); // Criando Ordem
       console.log(msn);
 
+      this.router.navigate(["/confirmaEndereco", this.cliente.email]);
+      /*
       if (msn == "Ordem cadastradas") {
         this.ws.getOrderID().subscribe((resposta: any) => {
           this.idOdem = resposta;
@@ -107,12 +109,12 @@ export class CadastroComponent implements OnInit {
             }
           }
         });
-      }
+      } */
       //
     });
   }
-  
-  
+
+
 
 
 }

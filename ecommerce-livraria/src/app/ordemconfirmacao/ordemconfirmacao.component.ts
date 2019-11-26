@@ -17,7 +17,7 @@ export class OrdemconfirmacaoComponent implements OnInit {
 
   aux:any;
 
-  
+
   orderID: number;
   body: any = [];
   teste:number;
@@ -25,8 +25,8 @@ export class OrdemconfirmacaoComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient) { }
 
-  ngOnInit() { 
-   
+  ngOnInit() {
+
     this.itemDoPedido = [];
     this.route.params.subscribe(params => {
       this.idCliente = params.idCliente;
@@ -35,16 +35,16 @@ export class OrdemconfirmacaoComponent implements OnInit {
        console.log(this.aux[0].id);
        console.log(this.idCliente)
 
-       this.retornodados(this.idCliente,this.aux[0].id-1);
-       
+       this.retornodados(this.idCliente,this.aux[0].id);
+
       // this.retornodados(this.idCliente,this.aux[0].id);
-       
+
 
       });
-      
-       
+
+
     });
-    
+
   }
 
   idcliente(){
@@ -52,7 +52,7 @@ export class OrdemconfirmacaoComponent implements OnInit {
       this.idCliente = params.idCliente;
   //    console.log(this.idCliente)
     });
-  
+
   }
 
   idpedido(){
@@ -70,8 +70,8 @@ export class OrdemconfirmacaoComponent implements OnInit {
       this.idOrder = this.itemDoPedido[0].orderID;
       this.end = this.itemDoPedido[0].street;
     });
-  
-    
+
+
   }
-  
+
 }

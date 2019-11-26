@@ -19,7 +19,13 @@ export class HistoricoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.idCliente = params.id;
       this.ws.getHistorico(this.idCliente).subscribe((resposta: any) => {
-        this.pedidosCliente = resposta;
+        this.pedidosCliente = resposta.map((pedido:any)=>{
+          pedido.nameF = pedido.nameF.split(',');
+          pedido.nameL = pedido.nameL.split(',');
+          pedido.AuthorID = pedido.AuthorID.split(',');
+          console.log(pedido.nameF);
+          return pedido;
+        });
         this.qtdTtlLvrsCliente = this.getQtdLvrsCliente();
       });
     });
