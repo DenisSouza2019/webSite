@@ -264,7 +264,7 @@ router.get('/:email?', (req, res) => {
 
 //inicia o servidor
 app.listen(port);
-
+console.log('API funcionando!');
 
 
 
@@ -280,7 +280,7 @@ function execSQLQuery(sqlQry, res, req, customFunction) {
     host: 'localhost', user: 'root', password: '',
 
     database: 'sandvigbookstore',
-    // database: 'livraria',
+    
 
     port: 3306
 
@@ -323,7 +323,7 @@ function execSQLQuery(sqlQry, res, req, customFunction) {
       ];
     });
 
-    console.log(cartProducts)
+    //console.log(cartProducts)
 
     const sql = `insert into bookorderitems values ?;`;
     const connection = mysql.createConnection({
@@ -336,7 +336,7 @@ function execSQLQuery(sqlQry, res, req, customFunction) {
       host: 'localhost', user: 'root', password: '',
 
       database: 'sandvigbookstore',
-      // database: 'livraria',
+       
 
       port: 3306
 
