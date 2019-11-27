@@ -202,7 +202,7 @@ router.get('/ordemdetalhes/:idCliente/:idOrdem', (req, res) => {
      inner join bookdescriptions as l on l.ISBN = i.ISBN
       where c.custID =${codCliente}  and i.orderID = ${codOrder} `;
 
-  //console.log(sql);
+  
 
   execSQLQuery(sql, res);
 });
